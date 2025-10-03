@@ -1,0 +1,835 @@
+export interface FileNode {
+  id: string;
+  name: string;
+  displayName: string;
+  type: 'file' | 'folder';
+  tooltip: string;
+  content?: string | any;
+  icon?: string;
+}
+
+export const fileSystem: FileNode[] = [
+  {
+    id: 'readme',
+    name: 'README.md',
+    displayName: 'Getting Started',
+    type: 'file',
+    tooltip: 'Click here for help and shortcuts',
+    icon: '📖',
+    content: `# Welcome to NULL EEC Terminal 🚀
+
+**Your Gateway to Cybersecurity at Easwari Engineering College**
+
+Welcome to NULL EEC - the official cybersecurity club at EEC. This interactive terminal gives you hands-on experience while exploring our community.
+
+## 🎯 Quick Navigation
+
+Click files in the sidebar or use commands:
+\`\`\`bash
+help     # Show help guide
+ls       # List files
+events   # View events
+team     # Meet our team
+contact  # Get in touch
+\`\`\`
+
+## 🗺️ Explore
+
+### 🔐 About NULL EEC
+Our mission and values
+
+### � Upcoming Events
+Stay updated with our latest workshops, CTF competitions, guest lectures, and networking events. Never miss an opportunity to enhance your cybersecurity skills!
+
+### 🏆 Past Events
+Explore our rich history of successful events, competitions, and achievements. See photos, read about past competitions, and get inspired by our community's accomplishments.
+
+### 👥 Our Team
+Meet the passionate individuals who drive NULL EEC forward. Learn about our core team members, their expertise, and how they contribute to our vibrant community.
+
+### 🏫 About EEC
+Understand the academic foundation that supports our club - Easwari Engineering College's commitment to technical excellence and innovation.
+
+### � Contact Us
+Multiple ways to connect with us - from Discord servers to email contacts. Join our community and start your cybersecurity journey today!
+
+## 🌟 What Makes This Special
+
+### Interactive Learning
+This terminal interface isn't just a website - it's an educational tool that introduces you to command-line thinking, a crucial skill in cybersecurity.
+
+### Real-Time Updates
+All content is dynamically loaded, ensuring you always have access to the latest information about events, team updates, and opportunities.
+
+### Community-Driven
+Every section reflects our community's collaborative spirit and commitment to practical, hands-on cybersecurity education.
+
+## 🚀 Ready to Begin?
+
+**For Beginners**: Start with "About NULL EEC" to understand our philosophy and approach
+**Event Enthusiasts**: Jump to "Upcoming Events" to see what's happening next
+**Visual Learners**: Browse "Past Photos" to see our community in action
+**Future Members**: Check "Contact Us" to join our growing community
+
+---
+
+## 💡 Pro Tips
+
+🔍 **Explore Everything**: Each file contains detailed, unique content about different aspects of NULL EEC
+⚡ **Use Commands**: Try typing commands in the terminal for a more authentic experience
+🤝 **Join Community**: Follow the links in "Contact Us" to join our active Discord and social media channels
+📚 **Stay Updated**: Bookmark this page and return regularly for event updates and new content
+
+---
+
+**Welcome to NULL EEC - Where Curiosity Meets Cybersecurity!**
+
+*Ready to start your journey? Click on "About NULL EEC" below or type 'open about-null-eec.md' in the terminal!*`
+  },
+  {
+    id: 'about-null',
+    name: 'about-null-eec.md',
+    displayName: 'About NULL EEC',
+    type: 'file',
+    tooltip: 'Learn about our hacking club and mission',
+    icon: '🔐',
+    content: `# About NULL EEC 🔐
+
+## Who We Are
+
+**NULL EEC** is the official student chapter of the **NULL Open Security Community** at Easwari Engineering College. We are far more than a traditional technical club; we're a vibrant platform for students who are curious, critical thinkers, and eager to gain practical, hands-on experience in cybersecurity.
+
+This club believes that **true security knowledge comes from application, not just theory**. We foster an energetic environment where learning and competition go hand-in-hand, building a strong community of learners by promoting curiosity and practical skill development.
+
+## Our Mission
+
+🎯 **Practical Learning**: Bridge classroom theory with real-world industry practices
+🛡️ **Hands-on Experience**: Provide immersive, application-based cybersecurity training
+🤝 **Community Building**: Create a strong network of security-minded individuals
+🌟 **Problem-Solving**: Challenge members to apply skills to real-world security scenarios
+🔍 **Curiosity-Driven**: Promote critical thinking and investigative mindset
+
+## What We Do
+
+### Immersive Workshops
+We host a range of hands-on workshops that bridge classroom learning with real-world industry practices:
+
+#### **Linux Commands & Tools Workshop**
+- Master essential Linux command-line tools
+- Learn system administration and security practices
+- Hands-on terminal sessions and scripting
+
+#### **DevSecOps & Application Security Workshop**
+- Integration of security into development lifecycle
+- Secure coding practices and vulnerability assessment
+- CI/CD pipeline security implementation
+
+#### **Web Application Security Sessions**
+- OWASP Top 10 vulnerabilities in practice
+- Real-world exploitation and remediation
+- Modern web security testing techniques
+
+### Competitive Events
+Our exciting competitive events challenge members to apply their problem-solving skills:
+
+#### **Online CTF Competition**
+- Multi-category security challenges
+- Team-based problem solving
+- Real-time competitive hacking scenarios
+
+#### **NULL CYRUS**
+- Our signature cybersecurity challenge event
+- Advanced security scenarios and puzzles
+- Industry-level problem-solving competitions
+
+#### **Inter-College Competitions**
+- Represent EEC in national-level events
+- Network with cybersecurity communities
+- Showcase practical skills on bigger platforms
+
+### Community Engagement
+- **Peer Learning Sessions**: Knowledge sharing among members
+- **Industry Connections**: Networking with security professionals
+- **Research Projects**: Collaborative security research initiatives
+- **Mentorship Programs**: Senior members guide newcomers
+
+## Our Philosophy
+
+**Application Over Theory**: We believe that cybersecurity skills are best learned through practical application rather than just theoretical study.
+
+**Curiosity-Driven Learning**: We encourage members to question, explore, and experiment with security concepts.
+
+**Critical Thinking**: Developing analytical minds that can approach security challenges methodically.
+
+**Ethical Foundation**: All our activities are grounded in responsible disclosure and ethical security practices.
+
+**Community Growth**: Every member contributes to and benefits from our collective knowledge base.
+
+## What Makes Us Special
+
+🌟 **Official NULL Chapter**: Part of the larger NULL Open Security Community network
+🎯 **Practical Focus**: Every workshop includes hands-on labs and real-world scenarios
+⚡ **Competitive Edge**: Regular competitions keep skills sharp and motivation high
+🤝 **Collaborative Environment**: Learning through teamwork and peer support
+🔄 **Continuous Evolution**: Adapting to the latest security trends and threats
+
+## Join Our Journey
+
+Whether you're a complete beginner curious about cybersecurity or someone with experience looking to deepen your skills, NULL EEC welcomes you! Our community thrives on diversity of backgrounds and skill levels.
+
+**Ready to start your cybersecurity journey?** Check out our upcoming events and join our vibrant community of learners and security enthusiasts.
+
+---
+*"Security through practical knowledge, growth through community"* - NULL EEC`
+  },
+  {
+    id: 'about-eec',
+    name: 'about-eec.md',
+    displayName: 'About EEC',
+    type: 'file',
+    tooltip: 'Learn about Easwari Engineering College',
+    icon: '🏫',
+    content: `# About Easwari Engineering College 🏫
+
+## The Foundation of Excellence
+
+**Easwari Engineering College** stands as a beacon of technical education in Chennai, Tamil Nadu, India. More than just an institution, EEC is a nurturing ground where innovative minds are shaped, critical thinking is fostered, and future technology leaders are born.
+
+Established with an unwavering commitment to quality education, EEC has been at the forefront of engineering excellence for decades, consistently adapting to industry needs while maintaining its core values of integrity, innovation, and inclusivity.
+
+## 🎓 Academic Excellence & Recognition
+
+### Engineering Departments
+Our comprehensive range of engineering disciplines ensures students find their passion:
+
+#### **Computer Science & Engineering**
+- Cutting-edge curriculum in AI, ML, and Data Science
+- Strong foundation in software development and system design
+- Home to NULL EEC - our premier cybersecurity club
+- Industry-aligned projects and internships
+
+#### **Electronics & Communication Engineering**
+- Advanced studies in communication systems and embedded technologies
+- Signal processing and VLSI design expertise
+- IoT and wireless communication specializations
+
+#### **Electrical & Electronics Engineering**
+- Power systems and renewable energy focus
+- Automation and control systems mastery
+- Smart grid and sustainable technology integration
+
+#### **Mechanical Engineering**
+- Traditional mechanical principles with modern applications
+- Robotics and automation integration
+- Manufacturing technology and design innovation
+
+#### **Civil Engineering**
+- Sustainable construction and green building practices
+- Infrastructure development and urban planning
+- Advanced materials and construction technology
+
+#### **Information Technology**
+- Software engineering and application development
+- Cybersecurity and network administration
+- Cloud computing and digital transformation
+
+### 🏆 Prestigious Accreditations
+✅ **AICTE Approved** - All India Council for Technical Education recognition
+✅ **Anna University Affiliated** - Connected to Tamil Nadu's premier technical university
+✅ **NBA Accredited Programs** - National Board of Accreditation quality assurance
+✅ **NAAC Accredited** - National Assessment and Accreditation Council certified
+✅ **ISO Certified** - International quality management standards compliance
+
+## 🏗️ World-Class Infrastructure
+
+### Academic Facilities
+🖥️ **State-of-the-Art Computer Labs**
+- Latest hardware and software configurations
+- Specialized labs for cybersecurity, AI/ML, and data science
+- 24/7 access for student projects and research
+
+� **Advanced Technical Laboratories**
+- Department-specific labs with industry-standard equipment
+- Research facilities for student and faculty projects
+- Regular equipment upgrades to match industry standards
+
+📚 **Comprehensive Library & Digital Resources**
+- Extensive collection of engineering books and journals
+- Digital library with access to international publications
+- Research databases and online learning platforms
+- Quiet study spaces and collaborative work areas
+
+### Campus Life Infrastructure
+🏢 **Modern Campus Architecture**
+- Eco-friendly buildings with sustainable design
+- Accessible infrastructure for all students
+- Wi-Fi enabled campus with high-speed connectivity
+
+🏟️ **Sports & Recreation Facilities**
+- Multi-purpose sports complex with indoor and outdoor facilities
+- Fitness center and recreational activity spaces
+- Regular sports tournaments and fitness programs
+
+🏠 **Comfortable Accommodation**
+- Separate hostels for male and female students
+- Modern amenities and security arrangements
+- Community spaces for social interaction and study
+
+## 🌟 Vibrant Student Ecosystem
+
+### Technical Excellence Clubs
+Our student-driven technical clubs are the heart of practical learning:
+
+#### **NULL EEC (Cybersecurity Club)** 🔐
+- Official chapter of NULL Open Security Community
+- Hands-on cybersecurity workshops and CTF competitions
+- Industry connections and ethical hacking expertise
+
+#### **Robotics & Automation Club** 🤖
+- Arduino and Raspberry Pi projects
+- Competition participation and innovation challenges
+- Cross-disciplinary collaboration opportunities
+
+#### **Coding & Development Club** 💻
+- Programming competitions and hackathons
+- Open-source project contributions
+- Peer learning and mentorship programs
+
+#### **IoT Innovation Hub** 🌐
+- Internet of Things project development
+- Smart city solutions and prototype building
+- Industry partnership projects
+
+#### **AI/ML Research Group** 🧠
+- Machine learning project implementations
+- Research paper publications and conferences
+- Industry problem-solving initiatives
+
+### 🎭 Cultural & Personal Development
+- **Annual Technical Festival** - Showcase of innovation and creativity
+- **Cultural Events** - Celebrating diversity and artistic expression
+- **Leadership Programs** - Developing management and communication skills
+- **Industry Interaction** - Regular visits and guest expert sessions
+- **Entrepreneurship Support** - Incubation facilities for student startups
+
+## 💼 Career Success & Industry Connections
+
+### Outstanding Placement Record
+Our graduates are highly sought after by leading organizations:
+
+#### **Top-Tier Technology Companies**
+- **Global Giants**: Microsoft, Amazon, Google, IBM
+- **Indian Unicorns**: Zoho, Freshworks, Flipkart, Paytm
+- **Consulting Leaders**: TCS, Infosys, Wipro, Accenture
+- **Product Companies**: Oracle, SAP, Adobe, Salesforce
+
+#### **Emerging Tech Sectors**
+- Cybersecurity firms and ethical hacking companies
+- Fintech startups and banking technology divisions
+- E-commerce platforms and digital marketing agencies
+- Research organizations and government technology initiatives
+
+### Industry Partnership Programs
+- **Internship Opportunities** - Semester-long industry exposure
+- **Live Project Collaborations** - Real-world problem solving
+- **Guest Expert Sessions** - Industry insights and career guidance
+- **Alumni Network** - Strong professional connections and mentorship
+
+## 🌍 Beyond Academics
+
+### Research & Innovation
+- Faculty and student research publications in international journals
+- Patent filings and intellectual property development
+- Collaboration with research institutions and industry partners
+- Innovation labs and prototype development facilities
+
+### Community Engagement
+- Social responsibility projects and community service
+- Environmental sustainability initiatives
+- Educational outreach programs for underprivileged students
+- Technology solutions for social challenges
+
+### Global Perspective
+- International collaboration programs
+- Foreign university exchange opportunities
+- Global certification and skill development programs
+- Cross-cultural learning and diversity appreciation
+
+## 📞 Connect With EEC
+
+### Campus Location
+📍 **Address**: 
+Easwari Engineering College
+Ramapuram, Chennai - 600 089
+Tamil Nadu, India
+
+### Contact Information
+📞 **Main Office**: +91-44-2499-5555
+📧 **General Inquiries**: info@eec.srmrmp.edu.in
+📧 **Admissions**: admissions@eec.srmrmp.edu.in
+🌐 **Official Website**: www.eec.srmrmp.edu.in
+
+### Social Media Presence
+Follow us for updates, achievements, and campus life:
+- **LinkedIn**: Professional updates and alumni success stories
+- **Instagram**: Campus life, events, and student achievements
+- **Facebook**: Community engagement and announcements
+- **YouTube**: Virtual campus tours and event recordings
+
+---
+
+## 🔮 Vision for the Future
+
+At Easwari Engineering College, we don't just educate engineers - we cultivate innovators, problem-solvers, and ethical leaders who will shape tomorrow's technological landscape. Our commitment extends beyond classroom learning to fostering critical thinking, practical application, and social responsibility.
+
+**Join us in our mission to engineer a better future, one innovative mind at a time.**
+
+---
+
+*"Excellence in Engineering Education, Innovation in Every Endeavor"* - EEC`
+  },
+  {
+    id: 'upcoming-events',
+    name: 'upcoming-events.json',
+    displayName: 'Upcoming Events',
+    type: 'file',
+    tooltip: 'See what exciting events are coming up',
+    icon: '📅',
+    content: [
+      {
+        id: 1,
+        title: 'Web Security Workshop',
+        date: '2024-12-15',
+        time: '10:00 AM - 4:00 PM',
+        venue: 'CSE Lab - Block A',
+        description: 'Learn about OWASP Top 10 vulnerabilities and how to exploit and secure web applications',
+        speaker: 'Industry Expert from Zoho',
+        registrationLink: '#',
+        tags: ['Workshop', 'Web Security', 'OWASP']
+      },
+      {
+        id: 2,
+        title: 'CTF Competition: Winter Challenge',
+        date: '2024-12-20',
+        time: '9:00 AM - 6:00 PM',
+        venue: 'Main Auditorium',
+        description: 'Annual Capture The Flag competition with challenges in web, crypto, reverse engineering, and forensics',
+        prizes: '₹10,000 prize pool',
+        registrationLink: '#',
+        tags: ['CTF', 'Competition', 'Hacking']
+      },
+      {
+        id: 3,
+        title: 'Network Penetration Testing Bootcamp',
+        date: '2025-01-10',
+        time: '2:00 PM - 5:00 PM',
+        venue: 'Computer Lab 3',
+        description: 'Hands-on session on network reconnaissance, scanning, and exploitation techniques',
+        prerequisites: 'Basic networking knowledge',
+        registrationLink: '#',
+        tags: ['Bootcamp', 'Networking', 'Pentesting']
+      },
+      {
+        id: 4,
+        title: 'Guest Lecture: Career in Cybersecurity',
+        date: '2025-01-18',
+        time: '11:00 AM - 1:00 PM',
+        venue: 'Seminar Hall',
+        description: 'Industry leader shares insights on building a career in cybersecurity and ethical hacking',
+        speaker: 'Senior Security Researcher',
+        registrationLink: '#',
+        tags: ['Guest Lecture', 'Career', 'Industry']
+      }
+    ]
+  },
+  {
+    id: 'past-events',
+    name: 'past-events.md',
+    displayName: 'Past Events',
+    type: 'file',
+    tooltip: 'View our previous successful events with photo galleries',
+    icon: '📜',
+    content: {
+      type: 'past-events',
+      events: [
+        {
+          id: 1,
+          title: 'Annual CTF Championship - October 2024',
+          subtitle: 'Our Flagship Event - 150+ Participants from Across Tamil Nadu',
+          description: 'The biggest cybersecurity competition of the year featuring 25 challenging problems across 5 specialized categories.',
+          date: 'October 15-16, 2024',
+          participants: '150+ students from 15+ colleges',
+          prizePool: '₹15,000 with sponsor prizes',
+          duration: '8 hours of intense competitive hacking',
+          winner: 'Team "0day Warriors" from CSE Department',
+          details: [
+            'Web Exploitation - Modern web app vulnerabilities and bypasses',
+            'Cryptography - Classical and modern encryption challenges',
+            'Binary Exploitation - Reverse engineering and memory corruption',
+            'Digital Forensics - Evidence analysis and data recovery',
+            'OSINT (Open Source Intelligence) - Information gathering and analysis'
+          ],
+          impact: [
+            'Participants gained hands-on experience with industry-standard tools',
+            'Created connections between cybersecurity enthusiasts across colleges',
+            'Several participants secured internships based on their performance',
+            'Established NULL EEC as a premier CTF organizing body in Chennai'
+          ],
+          photos: [
+            'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop'
+          ]
+        },
+        {
+          id: 2,
+          title: 'Bug Bounty Workshop - September 2024',
+          subtitle: 'Professional Bug Hunting Training with Industry Expert',
+          description: 'Comprehensive training on responsible disclosure and professional bug bounty hunting with real-world case studies.',
+          date: 'September 22, 2024',
+          participants: '80 enthusiastic students across all engineering disciplines',
+          instructor: 'Security Professional from top bug bounty platform',
+          duration: '6 hours hands-on training',
+          details: [
+            'Introduction to responsible disclosure and bug bounty programs',
+            'Understanding vulnerability assessment methodologies',
+            'Legal and ethical considerations in security research',
+            'Burp Suite Professional - Advanced web application testing',
+            'OWASP ZAP - Automated and manual security scanning',
+            'Custom Tool Development - Building personalized testing utilities',
+            'Report Writing - Professional vulnerability documentation'
+          ],
+          successStories: [
+            '5 students discovered their first legitimate bugs within one week',
+            '12 participants started active bug bounty hunting',
+            'Direct mentorship from working security professionals',
+            'Real case studies from major bug bounty platforms shared'
+          ],
+          photos: [
+            'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=800&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1556075798-4825dfaaf498?w=800&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=600&fit=crop'
+          ]
+        },
+        {
+          id: 3,
+          title: 'Cryptography Challenge Week - August 2024',
+          subtitle: 'Seven Days of Cryptographic Mastery',
+          description: 'Progressive learning structure from classical ciphers to modern cryptanalysis techniques over seven intensive days.',
+          date: 'August 12-18, 2024',
+          participants: '60+ students across all skill levels',
+          format: 'Daily challenges with progressive difficulty',
+          duration: '7 days of continuous learning',
+          winner: 'John Doe (3rd Year, CSE) - Solved all 25 challenges',
+          tracks: [
+            'Beginner Track (Days 1-3): Caesar Cipher, Substitution, Frequency Analysis',
+            'Intermediate Track (Days 4-5): RSA Implementation, AES Encryption, Hash Functions',
+            'Advanced Track (Days 6-7): Hash Collision Attacks, Modern Protocols, Cryptanalysis'
+          ],
+          achievements: [
+            '90% of participants completed beginner track',
+            '3 students initiated cryptography research projects',
+            'Cross-departmental teams formed for advanced challenges',
+            'Created lasting study groups for continued learning'
+          ],
+          photos: [
+            'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=800&h=600&fit=crop'
+          ]
+        },
+        {
+          id: 4,
+          title: 'Web Security Masterclass - July 2024',
+          subtitle: 'Three-Day Intensive Web Application Security Training',
+          description: 'Comprehensive web application security training covering OWASP Top 10 and advanced attack scenarios.',
+          date: 'July 18-20, 2024',
+          participants: '65 students from CSE, IT, and other departments',
+          format: 'Hands-on lab environment with vulnerable applications',
+          duration: '3 days intensive training (8 hours each)',
+          curriculum: [
+            'Day 1: Input Validation Vulnerabilities - SQL Injection, XSS, Command Injection',
+            'Day 2: Logic and Authentication Flaws - CSRF, SSRF, XXE, Authentication Bypass',
+            'Day 3: Advanced Attack Scenarios - Business Logic Flaws, Race Conditions, API Security'
+          ],
+          labEnvironment: [
+            '15 custom-built vulnerable applications for exploitation',
+            'Professional Tools: Burp Suite, OWASP ZAP, custom scripts',
+            'Individual skill assessment and improvement metrics',
+            'Team collaboration and knowledge sharing sessions'
+          ],
+          outcomes: [
+            'Participants gained job-ready web security skills',
+            'Workshop completion certificates for portfolio building',
+            '8 participants secured cybersecurity internships',
+            'Direct connections with web security professionals'
+          ],
+          photos: [
+            'https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=800&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=800&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop'
+          ]
+        },
+        {
+          id: 5,
+          title: 'Penetration Testing Workshop - June 2024',
+          subtitle: 'Introduction to Ethical Hacking and Professional Penetration Testing',
+          description: 'Complete penetration testing methodology training with dedicated lab environment and real-world scenarios.',
+          date: 'June 25-26, 2024',
+          participants: '45 students successfully completed full methodology',
+          format: 'Real-world lab environment with vulnerable machines',
+          duration: '2 days intensive hands-on training',
+          methodology: [
+            'Reconnaissance & Information Gathering - OSINT techniques and tools',
+            'Active Reconnaissance - Network enumeration and service discovery',
+            'Vulnerability Assessment & Exploitation - Nmap, Metasploit, custom exploits',
+            'Analysis & Reporting - Wireshark proficiency, password cracking, documentation'
+          ],
+          labFeatures: [
+            '10 different target systems with various security levels',
+            'Complex network topologies mimicking enterprise environments',
+            'Android and iOS application security testing',
+            'AWS and Azure security assessment scenarios'
+          ],
+          results: [
+            '100% of participants performed complete penetration test',
+            '95% could independently conduct basic pentests',
+            '15 participants applied for cybersecurity positions after workshop',
+            'Several students joined professional penetration testing teams'
+          ],
+          photos: [
+            'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=800&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&h=600&fit=crop'
+          ]
+        },
+        {
+          id: 6,
+          title: 'NULL Chapter Inauguration - March 2024',
+          subtitle: 'The Genesis of Cybersecurity Excellence at EEC',
+          description: 'Grand opening ceremony marking the official launch of NULL EEC with distinguished guests and live demonstrations.',
+          date: 'March 15, 2024',
+          attendance: '200+ students, faculty, and industry professionals',
+          mediaCoverage: 'Featured in 5 local technology publications',
+          guestSpeakers: [
+            'Dr. Sarah Chen - Renowned International Security Researcher',
+            'Mr. Rajesh Kumar - CISO of Major Financial Institution',
+            'Dean of Engineering and HOD Computer Science'
+          ],
+          liveDemos: [
+            'Real-Time Hacking Demo - Live web application penetration testing',
+            'Forensics Showcase - Digital evidence analysis and recovery',
+            'Cryptography Workshop - Interactive encryption/decryption session',
+            'Social Engineering Awareness - Live phishing demonstration (ethical)'
+          ],
+          initiatives: [
+            'Merit Scholarships: ₹50,000 total for outstanding cybersecurity students',
+            'Research Grants: Funding for student cybersecurity research projects',
+            'Industry Partnerships: Direct placement opportunities with security firms',
+            'Mentorship Network: One-on-one guidance from industry professionals'
+          ],
+          impact: [
+            '150 students registered for NULL EEC membership immediately',
+            'Established connections with 12 cybersecurity companies',
+            'Created foundation for ongoing community building',
+            'Set the stage for all future cybersecurity activities at EEC'
+          ],
+          photos: [
+            'https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=800&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&h=600&fit=crop'
+          ]
+        }
+      ],
+      summary: {
+        totalEvents: 25,
+        totalParticipants: '500+',
+        prizesMoney: '₹75,000+',
+        industryPartnerships: 15,
+        successStories: [
+          '35+ students secured cybersecurity internships/jobs',
+          '200+ workshop completion certificates issued',
+          '25 students won prizes in external CTF competitions',
+          '8 students initiated cybersecurity research projects'
+        ]
+      }
+    }
+  },
+  {
+    id: 'past-photos',
+    name: 'past-photos/',
+    displayName: 'Past Photos',
+    type: 'folder',
+    tooltip: 'Browse through our event photo gallery',
+    icon: '📸',
+    content: [
+      {
+        id: 1,
+        url: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800',
+        caption: 'CTF Championship 2024 - Teams competing',
+        event: 'Annual CTF Championship'
+      },
+      {
+        id: 2,
+        url: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800',
+        caption: 'Workshop participants learning web security',
+        event: 'Web Security Workshop'
+      },
+      {
+        id: 3,
+        url: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800',
+        caption: 'Guest lecture by industry expert',
+        event: 'Career in Cybersecurity'
+      },
+      {
+        id: 4,
+        url: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800',
+        caption: 'Hands-on penetration testing session',
+        event: 'Pentesting Bootcamp'
+      },
+      {
+        id: 5,
+        url: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800',
+        caption: 'NULL EEC Club Team 2024',
+        event: 'Team Photo'
+      },
+      {
+        id: 6,
+        url: 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800',
+        caption: 'CTF winners receiving their prizes',
+        event: 'Prize Distribution'
+      }
+    ]
+  },
+  {
+    id: 'team',
+    name: 'team.json',
+    displayName: 'Our Team',
+    type: 'file',
+    tooltip: 'Meet the NULL EEC core team members',
+    icon: '👥',
+    content: [
+      {
+        id: 1,
+        name: 'Arun Kumar',
+        role: 'President',
+        year: 'Final Year CSE',
+        avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Arun',
+        bio: 'Passionate about web security and CTF competitions',
+        skills: ['Web Security', 'CTF Player', 'Bug Bounty'],
+        github: 'https://github.com',
+        linkedin: 'https://linkedin.com'
+      },
+      {
+        id: 2,
+        name: 'Priya Sharma',
+        role: 'Vice President',
+        year: 'Third Year CSE',
+        avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Priya',
+        bio: 'Network security enthusiast and CTF organizer',
+        skills: ['Network Security', 'Pentesting', 'Forensics'],
+        github: 'https://github.com',
+        linkedin: 'https://linkedin.com'
+      },
+      {
+        id: 3,
+        name: 'Rajesh Menon',
+        role: 'Technical Lead',
+        year: 'Third Year CSE',
+        avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Rajesh',
+        bio: 'Specializes in reverse engineering and malware analysis',
+        skills: ['Reverse Engineering', 'Binary Exploitation', 'Malware'],
+        github: 'https://github.com',
+        linkedin: 'https://linkedin.com'
+      },
+      {
+        id: 4,
+        name: 'Sneha Iyer',
+        role: 'Events Coordinator',
+        year: 'Second Year CSE',
+        avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Sneha',
+        bio: 'Organizing amazing cybersecurity events and workshops',
+        skills: ['Event Management', 'Web Security', 'Social Engineering'],
+        github: 'https://github.com',
+        linkedin: 'https://linkedin.com'
+      },
+      {
+        id: 5,
+        name: 'Vikram Reddy',
+        role: 'Content Lead',
+        year: 'Third Year CSE',
+        avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Vikram',
+        bio: 'Creating educational content and writeups',
+        skills: ['Technical Writing', 'Cryptography', 'OSINT'],
+        github: 'https://github.com',
+        linkedin: 'https://linkedin.com'
+      },
+      {
+        id: 6,
+        name: 'Divya Krishnan',
+        role: 'Social Media Manager',
+        year: 'Second Year IT',
+        avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Divya',
+        bio: 'Managing club social media and outreach',
+        skills: ['Social Media', 'Design', 'Web Security'],
+        github: 'https://github.com',
+        linkedin: 'https://linkedin.com'
+      }
+    ]
+  },
+  {
+    id: 'contact',
+    name: 'contact.txt',
+    displayName: 'Contact Us',
+    type: 'file',
+    tooltip: 'Get in touch with NULL EEC',
+    icon: '📧',
+    content: `# Connect with NULL EEC 📧
+
+## Join the Cybersecurity Community
+
+Ready to join NULL EEC? Connect with us through multiple channels and start your cybersecurity journey.
+
+## 🚀 Quick Connect
+
+### 💬 Discord Server
+**Link:** discord.gg/null-eec
+**For:** Real-time discussions, CTF collaboration, and community bonding
+
+### 📱 Telegram Group
+**Link:** t.me/nulleec
+**For:** Quick updates and event reminders
+### � Email
+**General:** null.eec@easwari.edu.in
+**For:** Questions and membership inquiries
+
+### � Social Media
+- **Instagram:** @null_eec
+- **LinkedIn:** linkedin.com/company/null-eec  
+- **GitHub:** github.com/null-eec
+
+---
+
+**Ready to join? Connect with us today!**
+---
+
+**Ready to connect? Join our community today!**
+*Connect. Learn. Secure. - NULL EEC*`
+  }
+];
+
+export const getFileById = (id: string): FileNode | undefined => {
+  return fileSystem.find(file => file.id === id);
+};
+
+export const getFileByName = (name: string): FileNode | undefined => {
+  return fileSystem.find(file =>
+    file.name.toLowerCase() === name.toLowerCase()
+  );
+};

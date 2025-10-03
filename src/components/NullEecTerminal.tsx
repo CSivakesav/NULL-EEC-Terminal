@@ -1690,19 +1690,19 @@ const ContentRenderer = ({ file, setSelectedFile }: { file: FileNode; setSelecte
                 whileHover={{ x: 10 }}
               >
                 <div className={`text-4xl p-3 rounded-full ${category.color === 'red' ? 'bg-red-900/30 border border-red-500/50' :
-                    category.color === 'blue' ? 'bg-blue-900/30 border border-blue-500/50' :
-                      category.color === 'green' ? 'bg-green-900/30 border border-green-500/50' :
-                        category.color === 'purple' ? 'bg-purple-900/30 border border-purple-500/50' :
-                          'bg-orange-900/30 border border-orange-500/50'
+                  category.color === 'blue' ? 'bg-blue-900/30 border border-blue-500/50' :
+                    category.color === 'green' ? 'bg-green-900/30 border border-green-500/50' :
+                      category.color === 'purple' ? 'bg-purple-900/30 border border-purple-500/50' :
+                        'bg-orange-900/30 border border-orange-500/50'
                   }`}>
                   {category.icon}
                 </div>
                 <div>
                   <h3 className={`text-2xl font-bold ${category.color === 'red' ? 'text-red-400' :
-                      category.color === 'blue' ? 'text-blue-400' :
-                        category.color === 'green' ? 'text-green-400' :
-                          category.color === 'purple' ? 'text-purple-400' :
-                            'text-orange-400'
+                    category.color === 'blue' ? 'text-blue-400' :
+                      category.color === 'green' ? 'text-green-400' :
+                        category.color === 'purple' ? 'text-purple-400' :
+                          'text-orange-400'
                     }`}>
                     {category.name}
                   </h3>
@@ -1761,10 +1761,10 @@ const ContentRenderer = ({ file, setSelectedFile }: { file: FileNode; setSelecte
                         <div className="absolute bottom-0 left-0 right-0 p-4">
                           <h4 className="text-white font-bold text-sm mb-1">{photo.caption}</h4>
                           <p className={`text-xs ${category.color === 'red' ? 'text-red-300' :
-                              category.color === 'blue' ? 'text-blue-300' :
-                                category.color === 'green' ? 'text-green-300' :
-                                  category.color === 'purple' ? 'text-purple-300' :
-                                    'text-orange-300'
+                            category.color === 'blue' ? 'text-blue-300' :
+                              category.color === 'green' ? 'text-green-300' :
+                                category.color === 'purple' ? 'text-purple-300' :
+                                  'text-orange-300'
                             }`}>
                             {photo.event}
                           </p>
@@ -1774,10 +1774,10 @@ const ContentRenderer = ({ file, setSelectedFile }: { file: FileNode; setSelecte
                       {/* Border accent */}
                       <motion.div
                         className={`absolute inset-0 border-2 border-transparent group-hover:${category.color === 'red' ? 'border-red-400' :
-                            category.color === 'blue' ? 'border-blue-400' :
-                              category.color === 'green' ? 'border-green-400' :
-                                category.color === 'purple' ? 'border-purple-400' :
-                                  'border-orange-400'
+                          category.color === 'blue' ? 'border-blue-400' :
+                            category.color === 'green' ? 'border-green-400' :
+                              category.color === 'purple' ? 'border-purple-400' :
+                                'border-orange-400'
                           } rounded-xl transition-colors duration-300`}
                         initial={{ opacity: 0 }}
                         whileHover={{ opacity: 1 }}
@@ -3786,6 +3786,7 @@ export default function NullEecTerminal() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const terminalRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const loadingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const loadingIntervalRef = useRef<NodeJS.Timeout | null>(null);
@@ -3854,6 +3855,13 @@ export default function NullEecTerminal() {
     setSelectedFile(file);
     setIsMobileMenuOpen(false);
     addToHistory(`> Opened file: ${file.name}`);
+    
+    // Scroll content to top when switching pages
+    setTimeout(() => {
+      if (contentRef.current) {
+        contentRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }, 100); // Small delay to ensure content is rendered
   };
 
   const addToHistory = (message: string) => {
@@ -4139,6 +4147,7 @@ export default function NullEecTerminal() {
 
             {/* Content Viewer - Fixed height with hidden scroll */}
             <motion.div
+              ref={contentRef}
               initial={{ x: 100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ type: "spring", stiffness: 80, damping: 20, delay: 0.1 }}

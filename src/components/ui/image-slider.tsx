@@ -215,8 +215,8 @@ export function ImageSlider({
                                 key={index}
                                 onClick={() => goToSlide(index)}
                                 className={`h-2 rounded-full transition-all ${index === currentIndex
-                                        ? 'bg-[#00ff41] w-8 shadow-[0_0_10px_rgba(0,255,65,0.6)]'
-                                        : 'bg-gray-600 w-2 hover:bg-gray-400 hover:shadow-[0_0_8px_rgba(0,255,65,0.4)]'
+                                    ? 'bg-[#00ff41] w-8 shadow-[0_0_10px_rgba(0,255,65,0.6)]'
+                                    : 'bg-gray-600 w-2 hover:bg-gray-400 hover:shadow-[0_0_8px_rgba(0,255,65,0.4)]'
                                     }`}
                                 whileHover={{ scale: 1.2 }}
                                 whileTap={{ scale: 0.9 }}
@@ -245,8 +245,8 @@ export function ImageSlider({
                             whileTap={{ scale: 0.95 }}
                         >
                             <div className={`w-16 h-16 rounded-lg overflow-hidden border-2 transition-all ${index === currentIndex
-                                    ? 'border-[#00ff41] shadow-[0_0_15px_rgba(0,255,65,0.6)]'
-                                    : 'border-gray-600 hover:border-[#00ff41]/50'
+                                ? 'border-[#00ff41] shadow-[0_0_15px_rgba(0,255,65,0.6)]'
+                                : 'border-gray-600 hover:border-[#00ff41]/50'
                                 }`}>
                                 <img
                                     src={image.url}

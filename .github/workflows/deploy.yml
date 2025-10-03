@@ -49,6 +49,15 @@ jobs:
             ls -la out/
             echo "Total files in out:"
             find out -type f | wc -l
+            echo "Adding .nojekyll file for GitHub Pages..."
+            touch out/.nojekyll
+            echo "Checking for index.html..."
+            if [ -f "out/index.html" ]; then
+              echo "✅ index.html found"
+            else
+              echo "❌ index.html not found"
+              ls -la out/
+            fi
           else
             echo "❌ out directory not found"
             echo "Checking for build artifacts..."
@@ -65,6 +74,7 @@ jobs:
             if [ -f ".next/server/pages/index.html" ]; then
               cp .next/server/pages/index.html out/ || echo "Could not copy index.html"
             fi
+            touch out/.nojekyll
           fi
         
       - name: Upload artifact

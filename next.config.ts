@@ -3,8 +3,14 @@ import path from "node:path";
 
 const LOADER = path.resolve(__dirname, 'src/visual-edits/component-tagger-loader.js');
 
+// GitHub Pages deployment configuration
+const isGithubActions = process.env.GITHUB_ACTIONS || false;
+const basePath = isGithubActions ? '/NULL-EEC-Terminal' : '';
+
 const nextConfig: NextConfig = {
   output: 'export',
+  basePath: basePath,
+  assetPrefix: basePath,
   trailingSlash: true,
   skipTrailingSlashRedirect: true,
   images: {

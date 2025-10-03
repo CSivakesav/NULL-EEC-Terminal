@@ -18,7 +18,8 @@
         "build": "next build",
         "export": "next build",
         "start": "next start",
-        "lint": "next lint"
+        "lint": "next lint",
+        "build:debug": "next build --debug"
     },
     "dependencies": {
         "@babel/parser": "^7.28.4",

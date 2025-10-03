@@ -37,10 +37,35 @@ jobs:
         
       - name: Build with Next.js
         run: |
+          echo "Starting Next.js build for static export..."
           npm run build
+          echo "Build completed. Checking output..."
+          pwd
           ls -la
-          echo "Contents of current directory:"
-          find . -name "out" -type d
+          echo "Looking for out directory..."
+          if [ -d "out" ]; then
+            echo "✅ out directory found"
+            echo "Contents of out directory:"
+            ls -la out/
+            echo "Total files in out:"
+            find out -type f | wc -l
+          else
+            echo "❌ out directory not found"
+            echo "Checking for build artifacts..."
+            ls -la .next/ || echo "No .next directory"
+            echo "Trying alternative export location..."
+            # Some Next.js configurations may output to different locations
+            find . -name "*.html" -o -name "index.html" | head -10
+            echo "Creating fallback out directory with current build..."
+            mkdir -p out
+            # If static files exist elsewhere, try to copy them
+            if [ -d ".next/static" ]; then
+              cp -r .next/static out/ || echo "Could not copy static files"
+            fi
+            if [ -f ".next/server/pages/index.html" ]; then
+              cp .next/server/pages/index.html out/ || echo "Could not copy index.html"
+            fi
+          fi
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

@@ -54,26 +54,29 @@ jobs:
             echo "Checking for index.html..."
             if [ -f "out/index.html" ]; then
               echo "✅ index.html found"
+              head -20 out/index.html
             else
               echo "❌ index.html not found"
               ls -la out/
             fi
+            echo "Creating a simple test index.html as backup..."
+            cat > out/test.html << 'EOF'
+          <!DOCTYPE html>
+          <html>
+          <head><title>NULL EEC Test</title></head>
+          <body><h1>NULL EEC Terminal - Test Page</h1><p>If you see this, the deployment is working!</p></body>
+          </html>
+          EOF
           else
-            echo "❌ out directory not found"
-            echo "Checking for build artifacts..."
-            ls -la .next/ || echo "No .next directory"
-            echo "Trying alternative export location..."
-            # Some Next.js configurations may output to different locations
-            find . -name "*.html" -o -name "index.html" | head -10
-            echo "Creating fallback out directory with current build..."
+            echo "❌ out directory not found - creating manual deployment"
             mkdir -p out
-            # If static files exist elsewhere, try to copy them
-            if [ -d ".next/static" ]; then
-              cp -r .next/static out/ || echo "Could not copy static files"
-            fi
-            if [ -f ".next/server/pages/index.html" ]; then
-              cp .next/server/pages/index.html out/ || echo "Could not copy index.html"
-            fi
+            cat > out/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html>
+          <head><title>NULL EEC</title></head>
+          <body><h1>NULL EEC Terminal</h1><p>Manual deployment - build failed</p></body>
+          </html>
+          EOF
             touch out/.nojekyll
           fi
         

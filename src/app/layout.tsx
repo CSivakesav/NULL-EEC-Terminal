@@ -10,6 +10,11 @@ export const metadata: Metadata = {
   authors: [{ name: "CHILAKAPATI SIVA KESAV" }],
   creator: "CHILAKAPATI SIVA KESAV",
   keywords: ["cybersecurity", "terminal", "null-eec", "education", "hacking", "security"],
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/favicon.ico",
+    apple: "/icon.svg",
+  },
 };
 
 export default function RootLayout({

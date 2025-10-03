@@ -1,170 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NULL EEC Terminal - Interactive Cybersecurity Hub</title>
-    <meta name="description" content="Interactive terminal interface for NULL EEC cybersecurity community at Easwari Engineering College. Created by CHILAKAPATI SIVA KESAV">
-    <meta name="author" content="CHILAKAPATI SIVA KESAV">
-    <meta name="keywords" content="cybersecurity, terminal, null-eec, education, hacking, security">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="shortcut icon" href="/favicon.ico">
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: system-ui, -apple-system, sans-serif;
-            background: #000;
-            color: #00ff00;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-        .container {
-            text-align: center;
-            max-width: 800px;
-            padding: 2rem;
-        }
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: #00ff00;
-            text-shadow: 0 0 10px #00ff00;
-        }
-        .subtitle {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.8;
-        }
-        .dev-notice {
-            background: #1a1a1a;
-            border: 1px solid #00ff00;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin: 2rem 0;
-        }
-        .btn {
-            background: transparent;
-            border: 2px solid #00ff00;
-            color: #00ff00;
-            padding: 0.75rem 1.5rem;
-            font-size: 1rem;
-            cursor: pointer;
-            border-radius: 4px;
-            text-decoration: none;
-            display: inline-block;
-            margin: 0.5rem;
-            transition: all 0.3s ease;
-        }
-        .btn:hover {
-            background: #00ff00;
-            color: #000;
-            box-shadow: 0 0 20px #00ff00;
-        }
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-        .feature {
-            background: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 8px;
-            padding: 1rem;
-            text-align: left;
-        }
-        .feature h3 {
-            color: #00ff00;
-            margin-top: 0;
-        }
-        .author {
-            margin-top: 3rem;
-            font-size: 0.9rem;
-            opacity: 0.7;
-        }
-        .blinking {
-            animation: blink 1s infinite;
-        }
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NULL EEC Terminal - Interactive Cybersecurity Hub</title>
+  <meta name="description"
+    content="Interactive terminal interface for NULL EEC cybersecurity community at Easwari Engineering College. Created by CHILAKAPATI SIVA KESAV">
+  <meta name="author" content="CHILAKAPATI SIVA KESAV">
+  <meta name="keywords" content="cybersecurity, terminal, null-eec, education, hacking, security">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #000;
+      color: #00ff00;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .container {
+      text-align: center;
+      max-width: 800px;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #00ff00;
+      text-shadow: 0 0 10px #00ff00;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.8;
+    }
+
+    .dev-notice {
+      background: #1a1a1a;
+      border: 1px solid #00ff00;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .btn {
+      background: transparent;
+      border: 2px solid #00ff00;
+      color: #00ff00;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 4px;
+      text-decoration: none;
+      display: inline-block;
+      margin: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #00ff00;
+      color: #000;
+      box-shadow: 0 0 20px #00ff00;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .feature {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: left;
+    }
+
+    .feature h3 {
+      color: #00ff00;
+      margin-top: 0;
+    }
+
+    .author {
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
+    .blinking {
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+
+      0%,
+      50% {
+        opacity: 1;
+      }
+
+      51%,
+      100% {
+        opacity: 0;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <div class="container">
-        <h1>NULL EEC Terminal</h1>
-        <div class="subtitle">Interactive Cybersecurity Hub<span class="blinking">_</span></div>
-        
-        <div class="dev-notice">
-            <h3>🚀 Development Server Active</h3>
-            <p>The NULL EEC Terminal is currently running in development mode. For the full interactive experience with card-based navigation, photo galleries, and terminal interface, please access:</p>
-            <a href="http://localhost:3000" class="btn" target="_blank">Launch Interactive Terminal</a>
-        </div>
+  <div class="container">
+    <h1>NULL EEC Terminal</h1>
+    <div class="subtitle">Interactive Cybersecurity Hub<span class="blinking">_</span></div>
 
-        <div class="features">
-            <div class="feature">
-                <h3>🎯 Getting Started</h3>
-                <p>Learn about cybersecurity fundamentals and get introduced to the NULL EEC community</p>
-            </div>
-            <div class="feature">
-                <h3>�️ About NULL EEC</h3>
-                <p>Discover our mission to make cybersecurity education accessible to everyone</p>
-            </div>
-            <div class="feature">
-                <h3>🏛️ About EEC</h3>
-                <p>Learn about Easwari Engineering College and our academic excellence</p>
-            </div>
-            <div class="feature">
-                <h3>📞 Contact Us</h3>
-                <p>Get in touch with our team and join our cybersecurity community</p>
-            </div>
-            <div class="feature">
-                <h3>📅 Past Events</h3>
-                <p>Explore our workshop history and community achievements</p>
-            </div>
-            <div class="feature">
-                <h3>📸 Photo Gallery</h3>
-                <p>View our dynamic photo collage showcasing community moments</p>
-            </div>
-        </div>
-
-        <div>
-            <h3>🛠️ Tech Stack</h3>
-            <p>Built with Next.js 15, React 19, TypeScript, Tailwind CSS, and Framer Motion</p>
-        </div>
-
-        <div class="author">
-            <p>Created by <strong>CHILAKAPATI SIVA KESAV</strong></p>
-            <p>NULL EEC - Easwari Engineering College</p>
-        </div>
+    <div class="dev-notice">
+      <h3>🚀 Development Server Active</h3>
+      <p>The NULL EEC Terminal is currently running in development mode. For the full interactive experience with
+        card-based navigation, photo galleries, and terminal interface, please access:</p>
+      <a href="http://localhost:3000" class="btn" target="_blank">Launch Interactive Terminal</a>
     </div>
 
-    <script>
-        // Simple terminal-like typing effect
-        const subtitle = document.querySelector('.subtitle');
-        const originalText = 'Interactive Cybersecurity Hub';
-        let index = 0;
-        
-        function typeWriter() {
-            if (index < originalText.length) {
-                subtitle.innerHTML = originalText.slice(0, index + 1) + '<span class="blinking">_</span>';
-                index++;
-                setTimeout(typeWriter, 100);
-            } else {
-                subtitle.innerHTML = originalText + '<span class="blinking">_</span>';
-            }
-        }
-        
-        // Start typing effect after page load
-        setTimeout(() => {
-            subtitle.innerHTML = '<span class="blinking">_</span>';
-            index = 0;
-            typeWriter();
-        }, 1000);
-    </script>
+    <div class="features">
+      <div class="feature">
+        <h3>🎯 Getting Started</h3>
+        <p>Learn about cybersecurity fundamentals and get introduced to the NULL EEC community</p>
+      </div>
+      <div class="feature">
+        <h3>�️ About NULL EEC</h3>
+        <p>Discover our mission to make cybersecurity education accessible to everyone</p>
+      </div>
+      <div class="feature">
+        <h3>🏛️ About EEC</h3>
+        <p>Learn about Easwari Engineering College and our academic excellence</p>
+      </div>
+      <div class="feature">
+        <h3>📞 Contact Us</h3>
+        <p>Get in touch with our team and join our cybersecurity community</p>
+      </div>
+      <div class="feature">
+        <h3>📅 Past Events</h3>
+        <p>Explore our workshop history and community achievements</p>
+      </div>
+      <div class="feature">
+        <h3>📸 Photo Gallery</h3>
+        <p>View our dynamic photo collage showcasing community moments</p>
+      </div>
+    </div>
+
+    <div>
+      <h3>🛠️ Tech Stack</h3>
+      <p>Built with Next.js 15, React 19, TypeScript, Tailwind CSS, and Framer Motion</p>
+    </div>
+
+    <div class="author">
+      <p>Created by <strong>CHILAKAPATI SIVA KESAV</strong></p>
+      <p>NULL EEC - Easwari Engineering College</p>
+    </div>
+  </div>
+
+  <script>
+    // Simple terminal-like typing effect
+    const subtitle = document.querySelector('.subtitle');
+    const originalText = 'Interactive Cybersecurity Hub';
+    let index = 0;
+
+    function typeWriter() {
+      if (index < originalText.length) {
+        subtitle.innerHTML = originalText.slice(0, index + 1) + '<span class="blinking">_</span>';
+        index++;
+        setTimeout(typeWriter, 100);
+      } else {
+        subtitle.innerHTML = originalText + '<span class="blinking">_</span>';
+      }
+    }
+
+    // Start typing effect after page load
+    setTimeout(() => {
+      subtitle.innerHTML = '<span class="blinking">_</span>';
+      index = 0;
+      typeWriter();
+    }, 1000);
+  </script>
 </body>
+
 </html>

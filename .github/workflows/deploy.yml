@@ -36,7 +36,11 @@ jobs:
         run: npm ci
         
       - name: Build with Next.js
-        run: npm run build
+        run: |
+          npm run build
+          ls -la
+          echo "Contents of current directory:"
+          find . -name "out" -type d
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

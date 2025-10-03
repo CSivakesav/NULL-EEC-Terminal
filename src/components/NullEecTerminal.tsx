@@ -3855,7 +3855,7 @@ export default function NullEecTerminal() {
     setSelectedFile(file);
     setIsMobileMenuOpen(false);
     addToHistory(`> Opened file: ${file.name}`);
-    
+
     // Scroll content to top when switching pages
     setTimeout(() => {
       if (contentRef.current) {

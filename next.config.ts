@@ -20,6 +20,10 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // Disable server-side features for static export
+  experimental: {
+    esmExternals: false,
+  },
   // Temporarily disable component tagger for static export
   // outputFileTracingRoot: path.resolve(__dirname, '../../'),
   // turbopack: {

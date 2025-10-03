@@ -1,4 +1,4 @@
-"use client"
+"useimport { cva, type VariantProps } from 'class-variance-authority'client"
 
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"

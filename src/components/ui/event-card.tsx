@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, Variants } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import { Calendar, Users, Award, Clock, MapPin, TrendingUp } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';

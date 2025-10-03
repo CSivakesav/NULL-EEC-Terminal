@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence, useAnimation, Variants } from 'framer-motion';
+import { motion, AnimatePresence, useAnimation, type Variants } from 'framer-motion';
 import { FileNode, fileSystem, getFileById, getFileByName } from '@/data/content';
 import {
   FileText,

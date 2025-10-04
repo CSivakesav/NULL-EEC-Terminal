@@ -857,9 +857,10 @@ export const fileSystem: FileNode[] = [
             categories: ['Live Demos', 'Industry Talks', 'Community Building', 'Scholarship Awards'],
             speakers: ['Dr. Sarah Chen', 'Mr. Rajesh Kumar', 'Dean of Engineering'],
             photos: [
-              'https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&h=600&fit=crop',
-              'https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&h=600&fit=crop',
-              'https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=800&h=600&fit=crop'
+              '/Inception1.jpg',
+              '/Inception2.jpg',
+              '/Inception3.jpg',
+              '/Inception4.jpg'
             ]
           },
           {
@@ -883,9 +884,10 @@ export const fileSystem: FileNode[] = [
             categories: ['Kali Linux', 'Ethical Hacking', 'Penetration Testing', 'Security Tools'],
             instructor: 'NULL EEC Technical Team',
             photos: [
-              'https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&h=600&fit=crop',
-              'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&h=600&fit=crop',
-              'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=600&fit=crop'
+              'LinuxWorkShop1.jpg',
+              'LinuxWorkShop2.jpg',
+              'LinuxWorkShop3.jpg',
+              'LinuxWorkShop4.jpg'
             ]
           },
           {
@@ -909,9 +911,10 @@ export const fileSystem: FileNode[] = [
             categories: ['Web Security', 'Cryptography', 'Forensics', 'OSINT', 'Binary Exploitation'],
             winner: 'Team CyberNinjas',
             photos: [
-              'https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=600&fit=crop',
-              'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop',
-              'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop'
+              'CTF1.jpg',
+              'CTF2.jpg',
+              'CTF3.jpg',
+              'CTF4.jpg'
             ]
           },
           {
@@ -935,9 +938,10 @@ export const fileSystem: FileNode[] = [
             categories: ['Quick Fire Quizzes', 'OSINT Challenges', 'Cryptographic Puzzles', 'Team Collaboration'],
             winner: 'Team CyberSeekers',
             photos: [
-              'https://images.unsplash.com/photo-1556075798-4825dfaaf498?w=800&h=600&fit=crop',
-              'https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=800&h=600&fit=crop',
-              'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=600&fit=crop'
+              'Cyrus1.jpg',
+              'Cyrus2.jpg',
+              'Cyrus3.jpg',
+              'Cyrus4.jpg'
             ]
           },
           {
@@ -961,9 +965,10 @@ export const fileSystem: FileNode[] = [
             categories: ['Gamified Learning', 'Technical Cybersecurity', 'Online Platform', 'Certification Program'],
             platform: 'ThreatX LMS Platform',
             photos: [
-              'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop',
-              'https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=800&h=600&fit=crop',
-              'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=800&h=600&fit=crop'
+              'ThreatX1.jpg',
+              'ThreatX2.jpg',
+              'ThreatX3.jpg',
+              'ThreatX4.jpg'
             ]
           },
           {
@@ -987,35 +992,10 @@ export const fileSystem: FileNode[] = [
             categories: ['DevSecOps Culture', 'CI/CD Security', 'OWASP SAMM', 'SLSA Framework', 'Vulnerability Detection'],
             frameworks: ['OWASP SAMM', 'SLSA', 'CI/CD Security'],
             photos: [
-              'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=800&h=600&fit=crop',
-              'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&h=600&fit=crop',
-              'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=600&fit=crop'
-            ]
-          },
-          {
-            id: 7,
-            title: 'Inception Ceremony',
-            subtitle: 'A New Dawn for Cybersecurity Enthusiasts',
-            date: 'July 27, 2025',
-            type: 'Ceremony',
-            color: 'blue',
-            icon: '🎉',
-            participants: '120+',
-            duration: 'Half Day',
-            prizePool: 'Leadership & Learning',
-            description: 'Inaugural ceremony celebrating the launch of the ThreatX LMS Platform. Keynote speeches from industry leaders, live demonstrations, and networking opportunities for all participants.',
-            achievements: [
-              'Successful induction of the new leadership team',
-              'Guest lecture inspired students with vision and direction',
-              'Established the mission and goals for the upcoming term',
-              'Fostered a sense of unity and commitment among members'
-            ],
-            categories: ['Leadership', 'Community Building', 'Inauguration', 'Vision Setting'],
-            frameworks: ['Organizational Leadership', 'Club Governance', 'Team Development'],
-            photos: [
-              'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=800&h=600&fit=crop',
-              'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&h=600&fit=crop',
-              'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=600&fit=crop'
+              'DevSecOps1.jpg',
+              'DevSecOps2.jpg',
+              'DevSecOps3.jpg',
+              'DevSecOps4.jpg'
             ]
           }
         ]
@@ -1191,171 +1171,218 @@ export const fileSystem: FileNode[] = [
       title: 'NULL EEC Photo Gallery',
       subtitle: 'Memories from Our Cybersecurity Journey',
       description: 'A visual story of our community, events, and achievements through the years',
-      categories: [
+      photos: [
         {
-          name: 'CTF Competitions',
-          color: 'red',
-          icon: '🏆',
-          photos: [
-            {
-              id: 1,
-              url: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=400&fit=crop',
-              caption: 'CTF Championship 2024 - Teams competing intensely',
-              event: 'Annual CTF Championship',
-              size: 'large'
-            },
-            {
-              id: 2,
-              url: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=300&fit=crop',
-              caption: 'Winners celebrating their victory',
-              event: 'Online CTF Competition',
-              size: 'medium'
-            },
-            {
-              id: 3,
-              url: 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=400&h=300&fit=crop',
-              caption: 'Prize distribution ceremony',
-              event: 'CTF Prize Distribution',
-              size: 'medium'
-            }
-          ]
+          id: 1,
+          url: '/DevSecOps1.jpg',
+          caption: 'DevSecOps CTF competition in action',
+          event: 'DevSecOps CTF',
+          category: 'CTF Competitions',
+          size: 'large'
         },
         {
-          name: 'Workshops & Training',
-          color: 'blue',
-          icon: '🎓',
-          photos: [
-            {
-              id: 4,
-              url: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500&h=400&fit=crop',
-              caption: 'Bug bounty workshop in progress',
-              event: 'Bug Bounty Workshop',
-              size: 'large'
-            },
-            {
-              id: 5,
-              url: 'https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=400&h=300&fit=crop',
-              caption: 'Students learning penetration testing',
-              event: 'Penetration Testing Bootcamp',
-              size: 'medium'
-            },
-            {
-              id: 6,
-              url: 'https://images.unsplash.com/photo-1556075798-4825dfaaf498?w=400&h=300&fit=crop',
-              caption: 'Web security masterclass session',
-              event: 'Web Security Masterclass',
-              size: 'medium'
-            },
-            {
-              id: 7,
-              url: 'https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=300&h=400&fit=crop',
-              caption: 'Linux commands hands-on training',
-              event: 'Linux Commands Workshop',
-              size: 'small'
-            }
-          ]
+          id: 2,
+          url: '/DevSecOps2.jpg',
+          caption: 'Teams collaborating during CTF challenges',
+          event: 'DevSecOps CTF',
+          category: 'CTF Competitions',
+          size: 'medium'
         },
         {
-          name: 'Community & Team',
-          color: 'green',
-          icon: '👥',
-          photos: [
-            {
-              id: 8,
-              url: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop',
-              caption: 'NULL EEC Core Team 2024',
-              event: 'Team Photo',
-              size: 'large'
-            },
-            {
-              id: 9,
-              url: 'https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=400&h=300&fit=crop',
-              caption: 'Chapter inauguration ceremony',
-              event: 'NULL Chapter Inauguration',
-              size: 'medium'
-            },
-            {
-              id: 10,
-              url: 'https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=300&h=400&fit=crop',
-              caption: 'Community networking session',
-              event: 'Community Building',
-              size: 'small'
-            },
-            {
-              id: 11,
-              url: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&h=300&fit=crop',
-              caption: 'Students collaborating on challenges',
-              event: 'Team Building',
-              size: 'medium'
-            }
-          ]
+          id: 3,
+          url: '/DevSecOps3.jpg',
+          caption: 'Intense problem-solving moments',
+          event: 'DevSecOps CTF',
+          category: 'CTF Competitions',
+          size: 'medium'
         },
         {
-          name: 'Guest Lectures & Events',
-          color: 'purple',
-          icon: '🎤',
-          photos: [
-            {
-              id: 12,
-              url: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=500&h=400&fit=crop',
-              caption: 'Industry expert delivering keynote',
-              event: 'Guest Lecture Series',
-              size: 'large'
-            },
-            {
-              id: 13,
-              url: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=400&h=300&fit=crop',
-              caption: 'Interactive Q&A session',
-              event: 'Expert Panel Discussion',
-              size: 'medium'
-            },
-            {
-              id: 14,
-              url: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=300&h=400&fit=crop',
-              caption: 'Students engaging with speakers',
-              event: 'Knowledge Sharing',
-              size: 'small'
-            }
-          ]
+          id: 4,
+          url: '/LinuxWorkShop1.jpg',
+          caption: 'Linux workshop hands-on training',
+          event: 'Linux Workshop',
+          category: 'Workshops & Training',
+          size: 'large'
         },
         {
-          name: 'Fun & Innovation',
-          color: 'orange',
-          icon: '🎮',
-          photos: [
-            {
-              id: 15,
-              url: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=300&fit=crop',
-              caption: 'NULL CYRUS competition fun moments',
-              event: 'NULL CYRUS',
-              size: 'medium'
-            },
-            {
-              id: 16,
-              url: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=300&fit=crop',
-              caption: 'Creative problem-solving sessions',
-              event: 'Innovation Workshop',
-              size: 'medium'
-            },
-            {
-              id: 17,
-              url: 'https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=300&h=400&fit=crop',
-              caption: 'Breakthrough moments in learning',
-              event: 'Discovery Sessions',
-              size: 'small'
-            },
-            {
-              id: 18,
-              url: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=300&h=400&fit=crop',
-              caption: 'Celebrating achievements together',
-              event: 'Achievement Celebration',
-              size: 'small'
-            }
-          ]
+          id: 5,
+          url: '/LinuxWorkShop2.jpg',
+          caption: 'Interactive learning sessions',
+          event: 'Linux Workshop',
+          category: 'Workshops & Training',
+          size: 'medium'
+        },
+        {
+          id: 6,
+          url: '/Inception1.jpg',
+          caption: 'Team building and networking',
+          event: 'Inception Event',
+          category: 'Community & Team',
+          size: 'medium'
+        },
+        {
+          id: 7,
+          url: '/Inception2.jpg',
+          caption: 'Collaborative learning environment',
+          event: 'Inception Event',
+          category: 'Community & Team',
+          size: 'small'
+        },
+        {
+          id: 8,
+          url: '/Cyrus1.jpg',
+          caption: 'Industry expert sharing insights',
+          event: 'NULL CYRUS',
+          category: 'Guest Lectures & Events',
+          size: 'large'
+        },
+        {
+          id: 9,
+          url: '/Cyrus2.jpg',
+          caption: 'Interactive Q&A sessions',
+          event: 'NULL CYRUS',
+          category: 'Guest Lectures & Events',
+          size: 'medium'
+        },
+        {
+          id: 10,
+          url: '/DevSecOps4.jpg',
+          caption: 'Victory moments and team celebrations',
+          event: 'DevSecOps CTF',
+          category: 'CTF Competitions',
+          size: 'medium'
+        },
+        {
+          id: 11,
+          url: '/LinuxWorkShop3.jpg',
+          caption: 'Practical command line exercises',
+          event: 'Linux Workshop',
+          category: 'Workshops & Training',
+          size: 'small'
+        },
+        {
+          id: 12,
+          url: '/Inception3.jpg',
+          caption: 'Knowledge sharing sessions',
+          event: 'Inception Event',
+          category: 'Community & Team',
+          size: 'medium'
+        },
+        {
+          id: 13,
+          url: '/Cyrus3.jpg',
+          caption: 'Learning from professionals',
+          event: 'NULL CYRUS',
+          category: 'Guest Lectures & Events',
+          size: 'small'
+        },
+        {
+          id: 14,
+          url: '/DevSecOps5.jpg',
+          caption: 'Advanced CTF techniques demonstration',
+          event: 'DevSecOps CTF',
+          category: 'CTF Competitions',
+          size: 'medium'
+        },
+        {
+          id: 15,
+          url: '/LinuxWorkShop4.jpg',
+          caption: 'Students mastering Linux concepts',
+          event: 'Linux Workshop',
+          category: 'Workshops & Training',
+          size: 'large'
+        },
+        {
+          id: 16,
+          url: '/Inception4.jpg',
+          caption: 'Building lasting connections',
+          event: 'Inception Event',
+          category: 'Community & Team',
+          size: 'medium'
+        },
+        {
+          id: 17,
+          url: '/Cyrus4.jpg',
+          caption: 'Engaging presentations and discussions',
+          event: 'NULL CYRUS',
+          category: 'Guest Lectures & Events',
+          size: 'medium'
+        },
+        {
+          id: 18,
+          url: '/DevSecOps6.jpg',
+          caption: 'Security professionals mentoring students',
+          event: 'DevSecOps CTF',
+          category: 'CTF Competitions',
+          size: 'small'
+        },
+        {
+          id: 19,
+          url: '/LinuxWorkShop5.jpg',
+          caption: 'Advanced Linux security techniques',
+          event: 'Linux Workshop',
+          category: 'Workshops & Training',
+          size: 'medium'
+        },
+        {
+          id: 20,
+          url: '/Inception5.jpg',
+          caption: 'Creative moments and innovation',
+          event: 'Inception Event',
+          category: 'Community & Team',
+          size: 'small'
+        },
+        {
+          id: 21,
+          url: '/Cyrus5.jpg',
+          caption: 'Breakthrough moments in learning',
+          event: 'NULL CYRUS',
+          category: 'Fun & Innovation',
+          size: 'medium'
+        },
+        {
+          id: 22,
+          url: '/DevSecOps7.jpg',
+          caption: 'Final competition awards ceremony',
+          event: 'DevSecOps CTF',
+          category: 'CTF Competitions',
+          size: 'large'
+        },
+        {
+          id: 23,
+          url: '/LinuxWorkShop6.jpg',
+          caption: 'Workshop completion and certificates',
+          event: 'Linux Workshop',
+          category: 'Workshops & Training',
+          size: 'medium'
+        },
+        {
+          id: 24,
+          url: '/Inception6.jpg',
+          caption: 'Fun team activities and bonding',
+          event: 'Inception Event',
+          category: 'Community & Team',
+          size: 'medium'
+        },
+        {
+          id: 25,
+          url: '/Inception7.jpg',
+          caption: 'Inaugural ceremony proceedings',
+          event: 'Inception Event',
+          category: 'Community & Team',
+          size: 'small'
+        },
+        {
+          id: 26,
+          url: '/Cyrus6.jpg',
+          caption: 'Celebrating achievements together',
+          event: 'NULL CYRUS',
+          category: 'Fun & Innovation',
+          size: 'medium'
         }
       ],
       stats: {
-        totalPhotos: 18,
+        totalPhotos: 26,
         eventsDocumented: 12,
         yearsActive: 2,
         communitySize: '200+'

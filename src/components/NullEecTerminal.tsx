@@ -1674,121 +1674,101 @@ const ContentRenderer = ({ file, setSelectedFile }: { file: FileNode; setSelecte
           </motion.div>
         </motion.div>
 
-        {/* Photo Collage by Categories */}
-        <div className="space-y-12">
-          {galleryData.categories.map((category: any, categoryIndex: number) => (
-            <motion.div
-              key={category.name}
-              className="space-y-6"
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 + categoryIndex * 0.2, duration: 0.6 }}
-            >
-              {/* Category Header */}
-              <motion.div
-                className="flex items-center gap-4 mb-6"
-                whileHover={{ x: 10 }}
-              >
-                <div className={`text-4xl p-3 rounded-full ${category.color === 'red' ? 'bg-red-900/30 border border-red-500/50' :
-                  category.color === 'blue' ? 'bg-blue-900/30 border border-blue-500/50' :
-                    category.color === 'green' ? 'bg-green-900/30 border border-green-500/50' :
-                      category.color === 'purple' ? 'bg-purple-900/30 border border-purple-500/50' :
-                        'bg-orange-900/30 border border-orange-500/50'
-                  }`}>
-                  {category.icon}
-                </div>
-                <div>
-                  <h3 className={`text-2xl font-bold ${category.color === 'red' ? 'text-red-400' :
-                    category.color === 'blue' ? 'text-blue-400' :
-                      category.color === 'green' ? 'text-green-400' :
-                        category.color === 'purple' ? 'text-purple-400' :
-                          'text-orange-400'
-                    }`}>
-                    {category.name}
-                  </h3>
-                  <p className="text-gray-400">{category.photos.length} memories captured</p>
-                </div>
-              </motion.div>
+        {/* Unified Photo Collage */}
+        <motion.div
+          className="space-y-6"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
+        >
+          {/* Dynamic Collage Layout */}
+          <div className="grid grid-cols-12 gap-3 auto-rows-min">
+            {galleryData.photos.map((photo: any, photoIndex: number) => {
+              // Dynamic grid spans based on photo size and position
+              let gridClass = '';
+              if (photo.size === 'large') {
+                gridClass = 'col-span-12 md:col-span-8 lg:col-span-6 row-span-2';
+              } else if (photo.size === 'medium') {
+                gridClass = 'col-span-6 md:col-span-4 lg:col-span-3';
+              } else {
+                gridClass = 'col-span-6 md:col-span-3 lg:col-span-2';
+              }
 
-              {/* Dynamic Collage Layout */}
-              <div className="grid grid-cols-12 gap-3 auto-rows-min">
-                {category.photos.map((photo: any, photoIndex: number) => {
-                  // Dynamic grid spans based on photo size and position
-                  let gridClass = '';
-                  if (photo.size === 'large') {
-                    gridClass = 'col-span-12 md:col-span-8 lg:col-span-6 row-span-2';
-                  } else if (photo.size === 'medium') {
-                    gridClass = 'col-span-6 md:col-span-4 lg:col-span-3';
-                  } else {
-                    gridClass = 'col-span-6 md:col-span-3 lg:col-span-2';
-                  }
+              // Get category color based on photo category
+              const getCategoryColor = (category: string) => {
+                if (category.includes('CTF') || category.includes('Competition')) return 'red';
+                if (category.includes('Workshop') || category.includes('Training')) return 'blue';
+                if (category.includes('Community') || category.includes('Team')) return 'green';
+                if (category.includes('Guest') || category.includes('Lecture')) return 'purple';
+                return 'orange';
+              };
 
-                  return (
-                    <motion.div
-                      key={photo.id}
-                      className={`relative group overflow-hidden rounded-xl ${gridClass}`}
-                      initial={{ opacity: 0, scale: 0.8, rotateY: -15 }}
-                      animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-                      transition={{
-                        delay: 0.6 + categoryIndex * 0.2 + photoIndex * 0.1,
-                        duration: 0.6,
-                        type: "spring",
-                        stiffness: 100
-                      }}
-                      whileHover={{
-                        scale: 1.05,
-                        rotateY: 5,
-                        zIndex: 10
-                      }}
-                      style={{
-                        aspectRatio: photo.size === 'large' ? '16/10' :
-                          photo.size === 'medium' ? '4/3' : '3/4'
-                      }}
-                    >
-                      <motion.img
-                        src={photo.url}
-                        alt={photo.caption}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                        whileHover={{ filter: "brightness(1.1)" }}
-                      />
+              const categoryColor = getCategoryColor(photo.category);
 
-                      {/* Overlay */}
-                      <motion.div
-                        className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                        initial={{ opacity: 0 }}
-                        whileHover={{ opacity: 1 }}
-                      >
-                        <div className="absolute bottom-0 left-0 right-0 p-4">
-                          <h4 className="text-white font-bold text-sm mb-1">{photo.caption}</h4>
-                          <p className={`text-xs ${category.color === 'red' ? 'text-red-300' :
-                            category.color === 'blue' ? 'text-blue-300' :
-                              category.color === 'green' ? 'text-green-300' :
-                                category.color === 'purple' ? 'text-purple-300' :
-                                  'text-orange-300'
-                            }`}>
-                            {photo.event}
-                          </p>
-                        </div>
-                      </motion.div>
+              return (
+                <motion.div
+                  key={photo.id}
+                  className={`relative group overflow-hidden rounded-xl ${gridClass}`}
+                  initial={{ opacity: 0, scale: 0.8, rotateY: -15 }}
+                  animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+                  transition={{
+                    delay: 0.6 + photoIndex * 0.05,
+                    duration: 0.6,
+                    type: "spring",
+                    stiffness: 100
+                  }}
+                  whileHover={{
+                    scale: 1.05,
+                    rotateY: 5,
+                    zIndex: 10
+                  }}
+                  style={{
+                    aspectRatio: photo.size === 'large' ? '16/10' :
+                      photo.size === 'medium' ? '4/3' : '3/4'
+                  }}
+                >
+                  <motion.img
+                    src={photo.url}
+                    alt={photo.caption}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    whileHover={{ filter: "brightness(1.1)" }}
+                  />
 
-                      {/* Border accent */}
-                      <motion.div
-                        className={`absolute inset-0 border-2 border-transparent group-hover:${category.color === 'red' ? 'border-red-400' :
-                          category.color === 'blue' ? 'border-blue-400' :
-                            category.color === 'green' ? 'border-green-400' :
-                              category.color === 'purple' ? 'border-purple-400' :
-                                'border-orange-400'
-                          } rounded-xl transition-colors duration-300`}
-                        initial={{ opacity: 0 }}
-                        whileHover={{ opacity: 1 }}
-                      />
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </motion.div>
-          ))}
-        </div>
+                  {/* Overlay */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                  >
+                    <div className="absolute bottom-0 left-0 right-0 p-4">
+                      <h4 className="text-white font-bold text-sm mb-1">{photo.caption}</h4>
+                      <p className={`text-xs ${categoryColor === 'red' ? 'text-red-300' :
+                        categoryColor === 'blue' ? 'text-blue-300' :
+                          categoryColor === 'green' ? 'text-green-300' :
+                            categoryColor === 'purple' ? 'text-purple-300' :
+                              'text-orange-300'
+                        }`}>
+                        {photo.event} • {photo.category}
+                      </p>
+                    </div>
+                  </motion.div>
+
+                  {/* Border accent */}
+                  <motion.div
+                    className={`absolute inset-0 border-2 border-transparent group-hover:${categoryColor === 'red' ? 'border-red-400' :
+                      categoryColor === 'blue' ? 'border-blue-400' :
+                        categoryColor === 'green' ? 'border-green-400' :
+                          categoryColor === 'purple' ? 'border-purple-400' :
+                            'border-orange-400'
+                      } rounded-xl transition-colors duration-300`}
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                  />
+                </motion.div>
+              );
+            })}
+          </div>
+        </motion.div>
 
         {/* Footer Message */}
         <motion.div
@@ -3774,6 +3754,47 @@ const ContentRenderer = ({ file, setSelectedFile }: { file: FileNode; setSelecte
   );
 };
 
+// Easter Egg Popup Component
+const EasterEggPopup = ({ message, show, onClose }: { message: string; show: boolean; onClose: () => void }) => {
+  useEffect(() => {
+    if (show) {
+      const timer = setTimeout(() => {
+        onClose();
+      }, 10000); // 10 seconds
+      return () => clearTimeout(timer);
+    }
+  }, [show, onClose]);
+
+  if (!show) return null;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.8, y: -50 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      exit={{ opacity: 0, scale: 0.8, y: -50 }}
+      className="fixed top-8 left-1/2 transform -translate-x-1/2 z-50 bg-gradient-to-r from-purple-900/95 to-cyan-900/95 backdrop-blur-md border border-cyan-500/50 rounded-lg p-4 shadow-2xl max-w-md"
+    >
+      <div className="flex items-center justify-between">
+        <div className="text-cyan-400 font-mono text-sm flex-1">
+          {message}
+        </div>
+        <button
+          onClick={onClose}
+          className="ml-3 text-gray-400 hover:text-white transition-colors"
+        >
+          ✕
+        </button>
+      </div>
+      <motion.div
+        className="h-1 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full mt-2"
+        initial={{ width: '100%' }}
+        animate={{ width: '0%' }}
+        transition={{ duration: 10, ease: 'linear' }}
+      />
+    </motion.div>
+  );
+};
+
 export default function NullEecTerminal() {
   const [showWelcome, setShowWelcome] = useState(true);
   const [selectedFile, setSelectedFile] = useState<FileNode | null>(null);
@@ -3785,6 +3806,7 @@ export default function NullEecTerminal() {
   const [currentCommand, setCurrentCommand] = useState('');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [easterEggPopup, setEasterEggPopup] = useState<{ message: string, show: boolean }>({ message: '', show: false });
   const terminalRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -3868,9 +3890,295 @@ export default function NullEecTerminal() {
     setCommandHistory(prev => [...prev, message]);
   };
 
+  const showEasterEgg = (message: string) => {
+    setEasterEggPopup({ message, show: true });
+  };
+
   const executeCommand = (cmd: string) => {
     const command = cmd.trim().toLowerCase();
+    const originalCmd = cmd.trim();
 
+    // Easter Eggs - Cybersecurity & Programming Themed
+    const easterEggs: { [key: string]: string } = {
+      'whoami': 'You are a future cybersecurity expert! 🔐',
+      'sudo rm -rf /': 'Nice try! But we\'re ethical hackers here 😄',
+      'hack': 'Hacking in progress... 🔴🔴🔴 Just kidding! Join our CTF instead!',
+      'matrix': 'Welcome to the real world, Neo 🕶️',
+      'coffee': '☕ Fuel of hackers! Our team runs on coffee and curiosity',
+      '42': 'The answer to life, universe, and cybersecurity 🌌',
+      'hello world': 'Hello, future NULL EEC member! 👋',
+      'git commit -m': '💻 Don\'t forget to version control your exploits!',
+      'pwd': '📁 You are in: /home/hacker/null-eec-terminal',
+      'ping localhost': '🏠 127.0.0.1: There\'s no place like home!',
+      'sql injection': '\')); DROP TABLE students; -- Just kidding! We sanitize inputs 🛡️',
+      'xss': '<script>alert("XSS blocked!");</script> Nice try! 🚫',
+      'kali linux': '🐧 Kali detected! You\'re ready for our workshops',
+      'nmap': '🔍 Scanning... Found: Awesome cybersecurity opportunities!',
+      'wireshark': '🦈 Packet analysis mode: ON! Capturing knowledge...',
+      'burp suite': '🔧 Web app security testing! Professional hacker vibes',
+      'metasploit': '💥 Framework loaded! Remember: Use responsibly',
+      'john the ripper': '🔓 Password cracking... Found: "cybersecurity123"',
+      'hashcat': '⚡ GPU-accelerated learning! Cracking the code of success',
+      'owasp': '🛡️ Top 10 security risks... and we teach them all!',
+      'ctf': '🏁 Capture The Flag! Our specialty at NULL EEC',
+      'penetration testing': '🎯 Authorized testing only! Ethical hacking FTW',
+      'social engineering': '🎭 The art of human hacking... Use your powers wisely!',
+      'zero day': '🌟 0-day exploit found! Achievement unlocked',
+      'vulnerability': '🔍 Security flaw detected! Time to patch and learn',
+      'firewall': '🔥🧱 Your digital fortress! Protection enabled',
+      'encryption': '🔐 AES-256 your secrets! Cryptography is beautiful',
+      'malware': '🦠 Malicious software detected! Antivirus mode: ON',
+      'phishing': '🎣 Don\'t take the bait! Stay vigilant online',
+      'ransomware': '💸 Encrypted! Backup your files, folks!',
+      'ddos': '🌊 Traffic flood detected! Mitigation strategies activated',
+      'man in the middle': '👤 MITM attack! Always verify your connections',
+      'buffer overflow': '💾 Stack smashing detected! Bounds checking is love',
+      'privilege escalation': '⬆️ Root access granted! With great power...',
+      'backdoor': '🚪 Hidden entrance found! Security through obscurity fails',
+      'rootkit': '👻 Stealth mode: ON! Deep system analysis required',
+      'trojan horse': '🐴 Gift that keeps on giving... problems!',
+      'keylogger': '⌨️ Keystroke monitoring! Mind your passwords',
+      'honeypot': '🍯 Sweet trap for attackers! Deception technology',
+      'sandbox': '🏖️ Safe execution environment! Play responsibly',
+      'threat modeling': '🎯 Identifying risks like a pro! Strategic thinking',
+      'incident response': '🚨 Security breach protocol activated! Stay calm',
+      'forensics': '🔍 Digital detective work! Evidence preservation mode',
+      'red team': '🔴 Offensive security! Ethical attackers unite',
+      'blue team': '🔵 Defensive security! Guardians of the network',
+      'purple team': '🟣 Collaboration! Red + Blue = Purple excellence',
+      'bug bounty': '💰 Ethical hacking rewards! Hunt responsibly',
+      'null': '🕳️ void found! This is where we belong - NULL EEC!',
+      'eec': '🏫 Easwari Engineering College - Where dreams take flight!',
+      'cyrus': '🎮 NULL CYRUS was epic! Check out our event photos',
+      'linux': '🐧 The penguin approves! Open source security',
+      'windows': '🪟 Blue screen of... learning opportunities!',
+      'macos': '🍎 Think different about security! Unix-based goodness',
+      'android': '🤖 Mobile security matters! APK analysis time',
+      'ios': '📱 Jailbreak responsibly! Mobile pentesting',
+      'docker': '🐳 Containerized security! Isolated and secure',
+      'kubernetes': '☸️ Container orchestration! DevSecOps excellence',
+      'blockchain': '⛓️ Decentralized security! Crypto validation',
+      'ai security': '🤖 Machine learning meets cybersecurity! Future is now',
+      'quantum': '⚛️ Quantum computing! Future of cryptography',
+      'darkweb': '🕵️ The hidden internet! Stay legal, explorer',
+      'tor': '🧅 Onion routing! Privacy and anonymity',
+      'vpn': '🛡️ Virtual Private Network! Tunnel to safety',
+      'password': '🔑 Use strong passwords! 2FA is your friend',
+      'mfa': '🔐 Multi-Factor Authentication! Layer that security',
+      'biometrics': '👆 Unique identification! You are the key',
+      'https': '🔒 Secure connection established! Green lock activated',
+      'ssl': '🛡️ Secure Sockets Layer! Certificate validated',
+      'tls': '🔐 Transport Layer Security! Handshake successful',
+      'ipsec': '🔒 IP Security protocol! Network layer protection',
+      'ssh': '🔑 Secure Shell! Remote access the right way',
+      'ftp': '📁 File Transfer... Consider SFTP instead!',
+      'telnet': '📞 Unencrypted communication! SSH is better',
+      'snmp': '📊 Network monitoring! Secure those community strings',
+      'dns': '🌐 Domain Name System! The phonebook of internet',
+      'dhcp': '📍 Dynamic IP assignment! Network configuration magic',
+      'arp': '🔗 Address Resolution Protocol! MAC to IP mapping',
+      'icmp': '📡 Internet Control Message! Ping pong protocol',
+      'tcp': '🤝 Transmission Control! Reliable connection',
+      'udp': '📤 User Datagram! Fast but unreliable',
+      'http': '🌐 Hypertext Transfer! Consider upgrading to HTTPS',
+      'smtp': '📧 Simple Mail Transfer! Email delivery system',
+      'pop3': '📬 Post Office Protocol! Email retrieval',
+      'imap': '📫 Internet Message Access! Better than POP3',
+      'ldap': '📚 Lightweight Directory! User authentication',
+      'kerberos': '🎫 Network authentication! Ticket-based security',
+      'oauth': '🔑 Open Authorization! Secure API access',
+      'saml': '🎟️ Security Assertion Markup! Single sign-on',
+      'jwt': '🎫 JSON Web Token! Stateless authentication',
+      'api': '🔌 Application Programming Interface! Connect responsibly',
+      'rest': '😴 Representational State Transfer! RESTful security',
+      'soap': '🧼 Simple Object Access! Clean your APIs',
+      'json': '📋 JavaScript Object Notation! Structured data',
+      'xml': '📄 eXtensible Markup Language! Tagged information',
+      'yaml': '📝 YAML Ain\'t Markup Language! Human-readable config',
+      'regex': '🔤 Regular Expressions! Pattern matching magic',
+      'base64': '🔢 Base64 encoding! Not encryption, just encoding',
+      'md5': '🔨 Message Digest 5! Cryptographically broken',
+      'sha1': '1️⃣ Secure Hash Algorithm 1! Deprecated for security',
+      'sha256': '2️⃣ SHA-256! Modern cryptographic hash',
+      'aes': '🔐 Advanced Encryption Standard! Symmetric crypto king',
+      'rsa': '🔑 Rivest-Shamir-Adleman! Asymmetric crypto legend',
+      'ecdsa': '📈 Elliptic Curve Digital Signature! Modern cryptography',
+      'pgp': '🔒 Pretty Good Privacy! Email encryption standard',
+      'gpg': '🔐 GNU Privacy Guard! Open source PGP',
+      'cryptography': '🔢 The art of secret writing! Math is beautiful',
+      'steganography': '🖼️ Hidden in plain sight! Secret messages in images',
+      'osint': '🔍 Open Source Intelligence! Public information gathering',
+      'shodan': '👁️ The search engine for everything connected',
+      'maltego': '🕸️ Data mining and link analysis! Connect the dots',
+      'nessus': '🔍 Vulnerability scanner! Find those flaws',
+      'openvas': '🛡️ Open source vulnerability assessment! Free security',
+      'nikto': '🕷️ Web server scanner! CGI vulnerability hunter',
+      'dirb': '📁 Directory brute forcer! Hidden paths revealed',
+      'gobuster': '💨 Fast directory/file brute forcer! Go speed',
+      'sqlmap': '💉 SQL injection tool! Database pwning',
+      'xsser': '❌ Cross-site scripting tester! XSS exploitation',
+      'beef': '🥩 Browser Exploitation Framework! Hook those browsers',
+      'aircrack': '📶 WiFi security testing! WEP/WPA cracking',
+      'hydra': '🐙 Network login cracker! Multi-protocol brute force',
+      'medusa': '🐍 Parallel login brute forcer! Another Hydra',
+      'ettercap': '🕸️ Network sniffer/interceptor! MitM made easy',
+      'tcpdump': '📦 Command-line packet analyzer! Network debugging',
+      'netcat': '🐱 Network swiss army knife! TCP/UDP tool',
+      'socat': '🔌 Socket CAT! Advanced netcat replacement',
+      'proxychains': '⛓️ Proxy tool! Route through multiple proxies',
+      'tor browser': '🧅 Anonymous web browsing! Privacy protection',
+      'tails': '🎭 The Amnesic Incognito Live System! Ultimate privacy',
+      'qubes': '🔒 Security by isolation! Compartmentalized OS',
+      'parrot os': '🦜 Security-focused distribution! Colorful hacking',
+      'backtrack': '👴 The predecessor! Now evolved to Kali',
+      'blackarch': '⚫ Arch-based penetration testing! Bleeding edge',
+      'bugtraq': '🐛 Security mailing list! Vulnerability disclosure',
+      'exploit-db': '💥 Exploit database! Public exploits archive',
+      'cve': '🆔 Common Vulnerabilities and Exposures! Standard IDs',
+      'cvss': '📊 Common Vulnerability Scoring System! Risk ratings',
+      'mitre': '🏛️ MITRE Corporation! Cybersecurity research',
+      'nist': '📏 National Institute of Standards! Security frameworks',
+      'iso 27001': '📋 Information security management! Global standard',
+      'pci dss': '💳 Payment Card Industry! Data security standard',
+      'hipaa': '🏥 Health Insurance Portability! Medical data protection',
+      'gdpr': '🇪🇺 General Data Protection Regulation! Privacy rights',
+      'sox': '📈 Sarbanes-Oxley Act! Financial reporting security',
+      'fisma': '🏛️ Federal Info Security Management! Government standard',
+      'cissp': '🎓 Certified Information Systems Security Professional!',
+      'cism': '🛡️ Certified Information Security Manager! Leadership',
+      'cisa': '🔍 Certified Information Systems Auditor! Governance',
+      'gcih': '🕵️ GIAC Certified Incident Handler! Response expert',
+      'oscp': '🏴‍☠️ Offensive Security Certified Professional! Try harder!',
+      'ceh': '🎩 Certified Ethical Hacker! White hat certified',
+      'security+': '➕ CompTIA Security Plus! Entry-level certification',
+      'cysa+': '🔍 CompTIA CySA Plus! Analyst certification',
+      'pentest+': '🎯 CompTIA PenTest Plus! Hands-on testing',
+      'sans': '🎓 SANS Institute! Premier security training',
+      'defcon': '🤖 DEF CON! The hacker summer camp',
+      'blackhat': '🎩 Black Hat! Premier security conference',
+      'rsa conference': '🔐 RSA Conference! Security industry gathering',
+      'bsides': '🎪 Security BSides! Community-driven events',
+      '2600': '📞 2600 Magazine! Hacker quarterly publication',
+      'phrack': '📖 Phrack Magazine! Underground hacker zine',
+      'hackthebox': '📦 Hack The Box! Online penetration testing labs',
+      'tryhackme': '🎮 TryHackMe! Gamified cybersecurity learning',
+      'vulnhub': '🔍 VulnHub! Vulnerable VMs for practice',
+      'overthewire': '🧵 OverTheWire! Wargames and challenges',
+      'picoctf': '🏁 PicoCTF! Beginner-friendly CTF platform',
+      'pwnable': '💻 Pwnable.kr! System hacking challenges',
+      'reversing': '↩️ Reverse engineering! Dissecting binaries',
+      'binary exploitation': '💥 Pwning binaries! Memory corruption fun',
+      'web exploitation': '🌐 Web application hacking! OWASP Top 10',
+      'cryptography challenges': '🔢 Crypto puzzles! Mathematical mysteries',
+      'forensics challenges': '🔍 Digital investigation! CSI cyber edition',
+      'steganography challenges': '🖼️ Hidden message puzzles! See the unseen',
+      'networking challenges': '🌐 Protocol analysis! Packet puzzle solving',
+      'scripting': '📜 Automation! Code your way to success',
+      'python': '🐍 Python programming! Hacker\'s favorite language',
+      'bash': '💻 Bash scripting! Shell mastery',
+      'powershell': '💙 PowerShell! Windows automation',
+      'ruby': '💎 Ruby programming! Metasploit\'s language',
+      'perl': '🐪 Perl programming! Text processing master',
+      'go': '🏃 Go programming! Modern system language',
+      'rust': '🦀 Rust programming! Memory-safe systems',
+      'c': '©️ C programming! Low-level system access',
+      'c++': '➕ C++ programming! Object-oriented systems',
+      'assembly': '⚙️ Assembly language! Bare metal programming',
+      'javascript': '☕ JavaScript! Web security testing',
+      'php': '🐘 PHP programming! Web application backend',
+      'sql': '🗄️ Structured Query Language! Database interaction',
+      'nosql': '🍃 NoSQL databases! Modern data storage',
+      'mongodb': '🍃 MongoDB! Document-based database',
+      'redis': '🔴 Redis! In-memory data structure',
+      'elasticsearch': '🔍 Elasticsearch! Search and analytics',
+      'docker security': '🐳 Container security! Isolated execution',
+      'kubernetes security': '☸️ K8s security! Orchestration protection',
+      'cloud security': '☁️ Cloud protection! Shared responsibility',
+      'aws security': '☁️ Amazon Web Services! Cloud security giant',
+      'azure security': '🔵 Microsoft Azure! Cloud security suite',
+      'gcp security': '🌈 Google Cloud Platform! Search giant\'s cloud',
+      'devops': '♾️ Development Operations! Continuous delivery',
+      'devsecops': '🔒 Development Security Operations! Shift left security',
+      'agile': '🏃 Agile methodology! Iterative development',
+      'scrum': '🏉 Scrum framework! Sprint-based development',
+      'kanban': '📋 Kanban board! Visual workflow management',
+      'ci/cd': '🔄 Continuous Integration/Deployment! Automated pipeline',
+      'jenkins': '👨‍💼 Jenkins! CI/CD automation server',
+      'gitlab': '🦊 GitLab! DevOps lifecycle platform',
+      'github': '😺 GitHub! Code collaboration platform',
+      'git': '📚 Git version control! Distributed development',
+      'svn': '📦 Subversion! Centralized version control',
+      'mercurial': '☿️ Mercurial! Another distributed VCS',
+      'vim': '📝 Vim editor! Modal text editing',
+      'emacs': '🖥️ Emacs editor! Extensible editor',
+      'nano': '📄 Nano editor! Simple text editing',
+      'vscode': '💙 Visual Studio Code! Modern IDE',
+      'sublime': '✨ Sublime Text! Sophisticated editor',
+      'atom': '⚛️ Atom editor! Hackable text editor',
+      'intellij': '🧠 IntelliJ IDEA! Smart IDE',
+      'eclipse': '🌙 Eclipse IDE! Java development environment',
+      'netbeans': '☕ NetBeans! Another Java IDE',
+      'xcode': '🍎 Xcode! Apple development environment',
+      'android studio': '🤖 Android Studio! Mobile app development',
+      'unity': '🎮 Unity engine! Game development platform',
+      'unreal': '🚀 Unreal Engine! AAA game development',
+      'blender': '🍯 Blender! 3D modeling and animation',
+      'photoshop': '🎨 Adobe Photoshop! Image editing',
+      'gimp': '🖼️ GNU Image Manipulation! Open source editing',
+      'inkscape': '🖊️ Inkscape! Vector graphics editor',
+      'firefox': '🦊 Firefox browser! Privacy-focused browsing',
+      'chrome': '🌈 Google Chrome! WebKit-based browser',
+      'safari': '🧭 Safari browser! Apple\'s web browser',
+      'edge': '🌊 Microsoft Edge! Modern Windows browser',
+      'opera': '🎭 Opera browser! Feature-rich browsing',
+      'brave': '🦁 Brave browser! Privacy and crypto rewards',
+      'stackoverflow': '📚 Stack Overflow! Developer Q&A platform',
+      'reddit': '🤖 Reddit! The front page of internet',
+      'hackernews': '📰 Hacker News! Tech community discussion',
+      'medium': '📝 Medium! Online publishing platform',
+      'twitter': '🐦 Twitter! Microblogging platform',
+      'linkedin': '💼 LinkedIn! Professional networking',
+      'discord': '🎮 Discord! Gaming communication platform',
+      'slack': '💬 Slack! Team collaboration tool',
+      'teams': '👥 Microsoft Teams! Enterprise communication',
+      'zoom': '📹 Zoom! Video conferencing platform',
+      'webex': '🌐 Cisco Webex! Enterprise video platform',
+      'skype': '📞 Skype! Voice and video calling',
+      'telegram': '✈️ Telegram! Secure messaging app',
+      'signal': '📱 Signal! Privacy-focused messaging',
+      'whatsapp': '💚 WhatsApp! Popular messaging platform',
+      'facebook': '👥 Facebook! Social networking giant',
+      'instagram': '📷 Instagram! Photo sharing platform',
+      'youtube': '📺 YouTube! Video sharing platform',
+      'tiktok': '🎵 TikTok! Short-form video platform',
+      'twitch': '🎮 Twitch! Live streaming platform',
+      'netflix': '🎬 Netflix! Streaming entertainment',
+      'spotify': '🎵 Spotify! Music streaming service',
+      'amazon': '📦 Amazon! E-commerce giant',
+      'google': '🔍 Google! Search engine giant',
+      'microsoft': '🏢 Microsoft! Software corporation',
+      'apple': '🍎 Apple! Consumer electronics company',
+      'tesla': '⚡ Tesla! Electric vehicle company',
+      'spacex': '🚀 SpaceX! Aerospace manufacturer',
+      'nasa': '🌌 NASA! Space exploration agency',
+      'mit': '🎓 MIT! Massachusetts Institute of Technology',
+      'stanford': '🌲 Stanford! Stanford University',
+      'harvard': '🎓 Harvard! Harvard University',
+      'berkeley': '🐻 UC Berkeley! University of California',
+      'cmu': '🤖 CMU! Carnegie Mellon University',
+      'georgia tech': '🐝 Georgia Tech! Georgia Institute of Technology'
+    };
+
+    // Check for easter eggs first
+    if (easterEggs[command] || easterEggs[originalCmd]) {
+      const message = easterEggs[command] || easterEggs[originalCmd];
+      showEasterEgg(message);
+      addToHistory(`> ${originalCmd}`);
+      addToHistory('✨ Easter egg found! Check the popup above!');
+      return;
+    }
+
+    // Standard commands
     if (command === 'help') {
       addToHistory('Available commands:');
       addToHistory('  help - Show this help message');
@@ -3879,6 +4187,7 @@ export default function NullEecTerminal() {
       addToHistory('  clear - Clear the terminal');
       addToHistory('');
       addToHistory('💡 Tip: You can also click on files in the left panel!');
+      addToHistory('🥚 Hidden: Try typing cybersecurity terms for surprises!');
     } else if (command === 'ls') {
       addToHistory('Available files:');
       fileSystem.forEach(file => {
@@ -4043,6 +4352,11 @@ export default function NullEecTerminal() {
       <div className="h-screen relative overflow-hidden">
         <MatrixRain />
         <FloatingHelpButton />
+        <EasterEggPopup
+          message={easterEggPopup.message}
+          show={easterEggPopup.show}
+          onClose={() => setEasterEggPopup({ message: '', show: false })}
+        />
 
         <div className="relative z-10 h-screen p-4 flex flex-col">
           {/* Header */}

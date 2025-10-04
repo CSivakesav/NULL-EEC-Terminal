@@ -192,64 +192,7 @@ const DashboardStats = () => {
   );
 };
 
-// Floating help button
-const FloatingHelpButton = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <motion.div
-      className="fixed bottom-6 right-6 z-50"
-      initial={{ scale: 0, rotate: -180 }}
-      animate={{ scale: 1, rotate: 0 }}
-      transition={{ delay: 2, type: "spring", stiffness: 200 }}
-    >
-      <motion.button
-        onClick={() => setIsOpen(!isOpen)}
-        className="interactive-btn dashboard-card p-4 rounded-full pulse-glow enhanced-focus"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-      >
-        <motion.div
-          animate={{ rotate: isOpen ? 45 : 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          {isOpen ? <X className="w-6 h-6 text-[#00ff41]" /> : <span className="text-2xl">?</span>}
-        </motion.div>
-      </motion.button>
-
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.8, y: 20 }}
-            className="absolute bottom-20 right-0 dashboard-card p-4 min-w-[300px] enhanced-tooltip"
-          >
-            <h3 className="text-[#00ff41] font-bold mb-3 text-lg gradient-text">Quick Help 💡</h3>
-            <div className="space-y-3 text-sm text-gray-300">
-              <div className="flex items-center gap-3 p-2 rounded hover:bg-[#00ff41]/10 transition-colors">
-                <span className="text-xl">👈</span>
-                <span>Click files on the left panel</span>
-              </div>
-              <div className="flex items-center gap-3 p-2 rounded hover:bg-[#00ff41]/10 transition-colors">
-                <span className="text-xl">⌨️</span>
-                <span>Type commands in terminal below</span>
-              </div>
-              <div className="flex items-center gap-3 p-2 rounded hover:bg-[#00ff41]/10 transition-colors">
-                <span className="text-xl">🔧</span>
-                <span>Try: <code className="bg-black/50 px-2 py-1 rounded text-[#00ff41]">help</code></span>
-              </div>
-              <div className="flex items-center gap-3 p-2 rounded hover:bg-[#00ff41]/10 transition-colors">
-                <span className="text-xl">🎯</span>
-                <span>Start with "About NULL EEC"</span>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.div>
-  );
-};
+// Floating help button removed to prevent covering execute button
 
 const WelcomeScreen = ({ onComplete }: { onComplete: () => void }) => {
   const [step, setStep] = useState(0);
@@ -4351,7 +4294,6 @@ export default function NullEecTerminal() {
     <TooltipProvider>
       <div className="h-screen relative overflow-hidden">
         <MatrixRain />
-        <FloatingHelpButton />
         <EasterEggPopup
           message={easterEggPopup.message}
           show={easterEggPopup.show}

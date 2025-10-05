@@ -736,11 +736,11 @@ export const fileSystem: FileNode[] = [
       {
         id: 1,
         title: 'Inception Ceremony',
-        date: '2024-12-15',
+        date: '2025-10-06',
         time: '10:00 AM - 4:00 PM',
-        venue: 'CSE Lab - Block A',
-        description: 'Learn about OWASP Top 10 vulnerabilities and how to exploit and secure web applications',
-        speaker: 'Industry Expert from Zoho',
+        venue: 'Civil Block - Gallery Hall',
+        description: 'Inaugural event marking the launch of NULL EEC with keynote speeches, live demos, and networking opportunities',
+        speaker: 'Industry Expert from Bank Of New York Mellon Corporation',
         registrationLink: '#',
         tags: ['Workshop', 'Web Security', 'OWASP']
       }
@@ -1407,7 +1407,7 @@ export const fileSystem: FileNode[] = [
         bio: 'Leading NULL EEC with vision and passion for cybersecurity excellence',
         skills: ['Leadership', 'Cybersecurity', 'Strategic Planning'],
         github: 'https://github.com',
-        linkedin: 'https://linkedin.com'
+        linkedin: 'https://www.linkedin.com/company/null-eec/posts/?feedView=all'
       },
       {
         id: 2,
@@ -1419,7 +1419,7 @@ export const fileSystem: FileNode[] = [
         bio: 'Supporting leadership and driving technical initiatives forward',
         skills: ['Electronics', 'Cybersecurity', 'Team Management'],
         github: 'https://github.com',
-        linkedin: 'https://linkedin.com'
+        linkedin: 'https://www.linkedin.com/company/null-eec/posts/?feedView=all'
       },
       {
         id: 3,
@@ -1443,19 +1443,19 @@ export const fileSystem: FileNode[] = [
         bio: 'Organizing and coordinating all NULL EEC activities efficiently',
         skills: ['Organization', 'Documentation', 'Communication'],
         github: 'https://github.com',
-        linkedin: 'https://linkedin.com'
+        linkedin: 'https://www.linkedin.com/company/null-eec/posts/?feedView=all'
       },
       {
         id: 5,
         name: 'Gladwinn',
         role: 'Joint Secretary',
         department: 'CSE',
-        year: 'Third Year',
+        year: 'Second Year',
         avatar: '/Hackericon.jpg',
         bio: 'Supporting secretarial duties and maintaining organizational flow',
         skills: ['Computer Science', 'Administration', 'Team Support'],
         github: 'https://github.com',
-        linkedin: 'https://linkedin.com'
+        linkedin: 'https://www.linkedin.com/company/null-eec/posts/?feedView=all'
       },
       {
         id: 6,
@@ -1467,7 +1467,7 @@ export const fileSystem: FileNode[] = [
         bio: 'Managing and organizing all NULL EEC events and workshops',
         skills: ['Event Management', 'Project Planning', 'Coordination'],
         github: 'https://github.com',
-        linkedin: 'https://linkedin.com'
+        linkedin: 'https://www.linkedin.com/company/null-eec/posts/?feedView=all'
       },
       {
         id: 7,
@@ -1479,7 +1479,7 @@ export const fileSystem: FileNode[] = [
         bio: 'Coordinating events and ensuring smooth execution',
         skills: ['Event Coordination', 'Electronics', 'Team Work'],
         github: 'https://github.com',
-        linkedin: 'https://linkedin.com'
+        linkedin: 'https://www.linkedin.com/company/null-eec/posts/?feedView=all'
       },
       {
         id: 8,
@@ -1491,7 +1491,7 @@ export const fileSystem: FileNode[] = [
         bio: 'Supporting event coordination with cybersecurity expertise',
         skills: ['Event Support', 'Cybersecurity', 'Organization'],
         github: 'https://github.com',
-        linkedin: 'https://linkedin.com'
+        linkedin: 'https://www.linkedin.com/company/null-eec/posts/?feedView=all'
       },
 
       {
@@ -1504,7 +1504,7 @@ export const fileSystem: FileNode[] = [
         bio: 'Developing challenging CTF problems and security challenges',
         skills: ['CTF Development', 'Security Challenges', 'Problem Solving'],
         github: 'https://github.com',
-        linkedin: 'https://linkedin.com'
+        linkedin: 'https://www.linkedin.com/company/null-eec/posts/?feedView=all'
       },
       {
         id: 10,
@@ -1516,7 +1516,7 @@ export const fileSystem: FileNode[] = [
         bio: 'Supporting CTF development with innovative challenge creation',
         skills: ['CTF Challenges', 'Security Research', 'Team Collaboration'],
         github: 'https://github.com',
-        linkedin: 'https://linkedin.com'
+        linkedin: 'https://www.linkedin.com/company/null-eec/posts/?feedView=all'
       },
       {
         id: 11,
@@ -1528,7 +1528,7 @@ export const fileSystem: FileNode[] = [
         bio: 'Contributing to NULL EEC cybersecurity initiatives',
         skills: ['Cybersecurity', 'Learning', 'Team Support'],
         github: 'https://github.com',
-        linkedin: 'https://linkedin.com'
+        linkedin: 'https://www.linkedin.com/company/null-eec/posts/?feedView=all'
       },
       {
         id: 12,
@@ -1540,7 +1540,7 @@ export const fileSystem: FileNode[] = [
         bio: 'Creating engaging content for cybersecurity education',
         skills: ['Content Creation', 'Technical Writing', 'Design'],
         github: 'https://github.com',
-        linkedin: 'https://linkedin.com'
+        linkedin: 'https://www.linkedin.com/company/null-eec/posts/?feedView=all'
       },
       {
         id: 13,
@@ -1552,7 +1552,7 @@ export const fileSystem: FileNode[] = [
         bio: 'Editing and refining content for quality assurance',
         skills: ['Content Editing', 'Quality Assurance', 'Technical Review'],
         github: 'https://github.com',
-        linkedin: 'https://linkedin.com'
+        linkedin: 'https://www.linkedin.com/company/null-eec/posts/?feedView=all'
       },
       {
         id: 14,
@@ -1564,7 +1564,7 @@ export const fileSystem: FileNode[] = [
         bio: 'Supporting content editing with electronics background',
         skills: ['Content Editing', 'Electronics', 'Technical Documentation'],
         github: 'https://github.com',
-        linkedin: 'https://linkedin.com'
+        linkedin: 'https://www.linkedin.com/company/null-eec/posts/?feedView=all'
       },
       {
         id: 15,
@@ -1576,7 +1576,7 @@ export const fileSystem: FileNode[] = [
         bio: 'Leading digital initiatives and online presence',
         skills: ['Digital Marketing', 'IT Solutions', 'Social Media'],
         github: 'https://github.com',
-        linkedin: 'https://linkedin.com'
+        linkedin: 'https://www.linkedin.com/company/null-eec/posts/?feedView=all'
       },
       {
         id: 16,
@@ -1588,7 +1588,7 @@ export const fileSystem: FileNode[] = [
         bio: 'Editing digital content and managing online assets',
         skills: ['Digital Editing', 'Graphic Design', 'IT Support'],
         github: 'https://github.com',
-        linkedin: 'https://linkedin.com'
+        linkedin: 'https://www.linkedin.com/company/null-eec/posts/?feedView=all'
       },
       {
         id: 17,
@@ -1600,7 +1600,7 @@ export const fileSystem: FileNode[] = [
         bio: 'Supporting editorial work with IT expertise',
         skills: ['Content Editing', 'IT Systems', 'Team Collaboration'],
         github: 'https://github.com',
-        linkedin: 'https://linkedin.com'
+        linkedin: 'https://www.linkedin.com/company/null-eec/posts/?feedView=all'
       },
       {
         id: 18,
@@ -1612,7 +1612,7 @@ export const fileSystem: FileNode[] = [
         bio: 'Contributing to editorial tasks and content management',
         skills: ['Content Management', 'IT Support', 'Editorial Support'],
         github: 'https://github.com',
-        linkedin: 'https://linkedin.com'
+        linkedin: 'https://www.linkedin.com/company/null-eec/posts/?feedView=all'
       },
       {
         id: 19,
@@ -1624,31 +1624,31 @@ export const fileSystem: FileNode[] = [
         bio: 'Leading executive operations and strategic initiatives',
         skills: ['Executive Leadership', 'Strategy', 'Cybersecurity'],
         github: 'https://github.com',
-        linkedin: 'https://linkedin.com'
+        linkedin: 'https://www.linkedin.com/company/null-eec/posts/?feedView=all'
       },
       {
         id: 20,
         name: 'Laxitha',
         role: 'Executive Member',
         department: 'CYBER',
-        year: 'Second Year',
+        year: 'Third Year',
         avatar: '/Hackericon.jpg',
         bio: 'Supporting executive functions and organizational growth',
         skills: ['Executive Support', 'Organization', 'Cybersecurity'],
         github: 'https://github.com',
-        linkedin: 'https://linkedin.com'
+        linkedin: 'https://www.linkedin.com/company/null-eec/posts/?feedView=all'
       },
       {
         id: 21,
         name: 'Farisa',
         role: 'Executive Member',
         department: 'CYBER',
-        year: 'Second Year',
+        year: 'Third Year',
         avatar: '/Hackericon.jpg',
         bio: 'Contributing to executive team with fresh perspectives',
         skills: ['Team Support', 'Innovation', 'Cybersecurity'],
         github: 'https://github.com',
-        linkedin: 'https://linkedin.com'
+        linkedin: 'https://www.linkedin.com/company/null-eec/posts/?feedView=all'
       },
       {
         id: 22,
@@ -1660,7 +1660,7 @@ export const fileSystem: FileNode[] = [
         bio: 'Executing organizational initiatives with dedication',
         skills: ['Project Execution', 'Team Work', 'Cybersecurity'],
         github: 'https://github.com',
-        linkedin: 'https://linkedin.com'
+        linkedin: 'https://www.linkedin.com/company/null-eec/posts/?feedView=all'
       }
     ]
   },
@@ -1685,7 +1685,7 @@ export const fileSystem: FileNode[] = [
           {
             title: 'Discord Server',
             icon: '💬',
-            link: 'discord.gg/null-eec',
+            link: 'https://discord.gg/bTCTHhj6',
             color: 'purple',
             description: 'Real-time discussions, CTF collaboration, and community bonding',
             responseTime: 'Instant'
@@ -1709,7 +1709,7 @@ export const fileSystem: FileNode[] = [
           {
             title: 'Social Media',
             icon: '🌐',
-            links: ['@null_eec (Instagram)', 'linkedin.com/company/null-eec', 'github.com/null-eec'],
+            links: ['https://www.instagram.com/null.eec/', 'https://www.linkedin.com/company/null-eec/posts/?feedView=all', 'github.com/null-eec'],
             color: 'orange',
             description: 'Follow for updates and community content',
             responseTime: 'Daily'

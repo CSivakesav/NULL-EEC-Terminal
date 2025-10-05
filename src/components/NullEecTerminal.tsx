@@ -1467,12 +1467,27 @@ const ContentRenderer = ({ file, setSelectedFile }: { file: FileNode; setSelecte
                 <h3 className="text-xl font-bold text-[#00ff41] mb-3">{channel.title}</h3>
                 <p className="text-gray-300 text-sm mb-3">{channel.description}</p>
                 {channel.link && (
-                  <p className="text-[#00ffff] text-sm font-mono">{channel.link}</p>
+                  <a
+                    href={channel.link.startsWith('http') ? channel.link : `https://${channel.link}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#00ffff] text-sm font-mono hover:underline cursor-pointer"
+                  >
+                    {channel.link}
+                  </a>
                 )}
                 {channel.links && (
                   <div className="space-y-1">
                     {channel.links.map((link: string, idx: number) => (
-                      <p key={idx} className="text-[#00ffff] text-xs font-mono">{link}</p>
+                      <a
+                        key={idx}
+                        href={link.startsWith('http') ? link : `https://${link}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block text-[#00ffff] text-xs font-mono hover:underline cursor-pointer"
+                      >
+                        {link}
+                      </a>
                     ))}
                   </div>
                 )}

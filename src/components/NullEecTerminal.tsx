@@ -752,6 +752,19 @@ const renderEnhancedMarkdown = (content: string) => {
 };
 
 const ContentRenderer = ({ file, setSelectedFile }: { file: FileNode; setSelectedFile: (file: FileNode) => void }) => {
+  const [showVideoModal, setShowVideoModal] = useState(false);
+  const [isLaunching, setIsLaunching] = useState(false);
+
+  const handleLaunchClick = () => {
+    setIsLaunching(true);
+
+    // Celebrate for 2 seconds then redirect
+    setTimeout(() => {
+      window.open('https://lms.nulleec.in/', '_blank');
+      setIsLaunching(false);
+    }, 2000);
+  };
+
   if (!file.content) return null;
 
   // Getting Started - New visual card-based layout
@@ -1489,8 +1502,8 @@ const ContentRenderer = ({ file, setSelectedFile }: { file: FileNode; setSelecte
           <motion.button
             onClick={handleLaunchClick}
             className="launch-button relative overflow-hidden bg-gradient-to-r from-[#ff6b35] via-[#ff3333] to-[#ff6b35] text-white px-16 py-6 rounded-full font-bold text-2xl shadow-2xl transform transition-all duration-300"
-            whileHover={{ 
-              scale: 1.1, 
+            whileHover={{
+              scale: 1.1,
               boxShadow: "0 20px 40px rgba(255, 51, 51, 0.4)",
               background: "linear-gradient(45deg, #ff3333, #ff6b35, #ffaa00, #ff6b35, #ff3333)"
             }}
@@ -1554,20 +1567,20 @@ const ContentRenderer = ({ file, setSelectedFile }: { file: FileNode; setSelecte
               <motion.div
                 key={i}
                 className="absolute text-4xl"
-                initial={{ 
+                initial={{
                   x: Math.random() * window.innerWidth,
                   y: window.innerHeight + 50,
-                  rotate: 0 
+                  rotate: 0
                 }}
-                animate={{ 
+                animate={{
                   y: -50,
                   rotate: 360,
                   x: Math.random() * window.innerWidth
                 }}
-                transition={{ 
+                transition={{
                   duration: 2,
                   delay: Math.random() * 0.5,
-                  ease: "easeOut" 
+                  ease: "easeOut"
                 }}
               >
                 {['🎉', '🚀', '⭐', '🎊', '💫'][Math.floor(Math.random() * 5)]}
@@ -3951,8 +3964,6 @@ export default function NullEecTerminal() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [easterEggPopup, setEasterEggPopup] = useState<{ message: string, show: boolean }>({ message: '', show: false });
-  const [showVideoModal, setShowVideoModal] = useState(false);
-  const [isLaunching, setIsLaunching] = useState(false);
   const terminalRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -4030,16 +4041,6 @@ export default function NullEecTerminal() {
         contentRef.current.scrollTo({ top: 0, behavior: 'smooth' });
       }
     }, 100); // Small delay to ensure content is rendered
-  };
-
-  const handleLaunchClick = () => {
-    setIsLaunching(true);
-    
-    // Celebrate for 2 seconds then redirect
-    setTimeout(() => {
-      window.open('https://lms.nulleec.in/', '_blank');
-      setIsLaunching(false);
-    }, 2000);
   };
 
   const addToHistory = (message: string) => {

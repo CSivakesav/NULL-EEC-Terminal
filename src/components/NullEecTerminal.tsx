@@ -1558,7 +1558,7 @@ const ContentRenderer = ({ file, setSelectedFile }: { file: FileNode; setSelecte
                 ▶️
               </motion.div>
               <span className="text-lg md:text-xl font-extrabold tracking-wider">
-                PLAY FULLSCREEN
+                LAUNCH NULL ILP
               </span>
             </motion.div>
 

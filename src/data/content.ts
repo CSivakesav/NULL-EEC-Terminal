@@ -1679,7 +1679,7 @@ export const fileSystem: FileNode[] = [
         description: 'Experience cutting-edge cybersecurity education through our Interactive Learning Platform. Master real-world skills with hands-on labs, CTF challenges, and expert-led courses.',
         tagline: 'Transform Your Cybersecurity Skills with Interactive Learning'
       },
-      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ' // Replace with actual video URL
+      videoUrl: '/null-launch.mp4' // Replace with actual video URL
     }
   },
   {

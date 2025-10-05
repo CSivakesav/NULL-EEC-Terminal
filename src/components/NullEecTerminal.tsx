@@ -754,6 +754,28 @@ const renderEnhancedMarkdown = (content: string) => {
 const ContentRenderer = ({ file, setSelectedFile }: { file: FileNode; setSelectedFile: (file: FileNode) => void }) => {
   const [showVideoModal, setShowVideoModal] = useState(false);
 
+  // Handle ESC key to close video modal
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && showVideoModal) {
+        setShowVideoModal(false);
+      }
+    };
+
+    if (showVideoModal) {
+      document.addEventListener('keydown', handleKeyDown);
+      // Prevent body scrolling when modal is open
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'auto';
+    };
+  }, [showVideoModal]);
+
   if (!file.content) return null;  // Getting Started - New visual card-based layout
   if (file.id === 'readme' && typeof file.content === 'object' && file.content?.type === 'getting-started') {
     const gettingStartedData = file.content;
@@ -1398,42 +1420,42 @@ const ContentRenderer = ({ file, setSelectedFile }: { file: FileNode; setSelecte
     const ilpData = file.content;
     return (
       <motion.div
-        className="space-y-12 null-ilp-container min-h-screen flex flex-col justify-center items-center"
+        className="null-ilp-container h-full flex flex-col justify-center items-center px-4"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         {/* Hero Section */}
         <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: -30 }}
+          className="text-center mb-6"
+          initial={{ opacity: 0, y: -15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.5 }}
         >
           <motion.h1
-            className="text-5xl md:text-6xl font-bold gradient-text mb-4 relative inline-block"
+            className="text-3xl md:text-4xl font-bold gradient-text mb-3 relative inline-block"
           >
             {ilpData.hero.title}
             <motion.div
-              className="absolute -bottom-3 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#00ff41] to-transparent"
+              className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#00ff41] to-transparent"
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
             />
           </motion.h1>
           <motion.p
-            className="text-xl md:text-2xl text-gray-200 mb-6 max-w-4xl mx-auto leading-relaxed"
+            className="text-base md:text-lg text-gray-200 mb-2 max-w-2xl mx-auto leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
+            transition={{ delay: 0.1, duration: 0.5 }}
           >
             {ilpData.hero.subtitle}
           </motion.p>
           <motion.p
-            className="text-lg text-gray-300 max-w-3xl mx-auto mb-16"
+            className="text-sm md:text-base text-gray-300 max-w-xl mx-auto mb-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
           >
             {ilpData.hero.description}
           </motion.p>
@@ -1442,139 +1464,126 @@ const ContentRenderer = ({ file, setSelectedFile }: { file: FileNode; setSelecte
         {/* Elaborate Video Play Button */}
         <motion.div
           className="text-center"
-          initial={{ opacity: 0, scale: 0.5 }}
+          initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.8, duration: 1.2, type: "spring", bounce: 0.4 }}
+          transition={{ delay: 0.3, duration: 0.6, type: "spring", bounce: 0.2 }}
         >
           <motion.button
             onClick={() => setShowVideoModal(true)}
-            className="video-play-button relative overflow-hidden bg-gradient-to-r from-[#ff1744] via-[#ff5722] to-[#ff9800] text-white px-20 py-8 rounded-full font-bold text-3xl shadow-2xl transform transition-all duration-500 group"
+            className="video-play-button relative overflow-hidden bg-gradient-to-r from-[#ff1744] via-[#ff5722] to-[#ff9800] text-white px-12 py-4 rounded-full font-bold text-xl shadow-xl transform transition-all duration-500 group"
             whileHover={{
-              scale: 1.15,
-              boxShadow: "0 25px 50px rgba(255, 23, 68, 0.5)",
+              scale: 1.05,
+              boxShadow: "0 15px 30px rgba(255, 23, 68, 0.4)",
               background: "linear-gradient(45deg, #ff1744, #ff5722, #ff9800, #4caf50, #2196f3, #9c27b0, #ff1744)"
             }}
-            whileTap={{ scale: 0.9 }}
+            whileTap={{ scale: 0.95 }}
             style={{
-              backgroundSize: "400% 400%",
-              animation: "gradient-shift 4s ease infinite"
+              backgroundSize: "300% 300%",
+              animation: "gradient-shift 3s ease infinite"
             }}
           >
             {/* Animated Play Icon */}
             <motion.div
-              className="flex items-center justify-center gap-4"
+              className="flex items-center justify-center gap-2"
               initial={false}
-              animate={{ x: [0, 5, 0] }}
+              animate={{ x: [0, 2, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             >
               <motion.div
-                className="text-5xl"
+                className="text-2xl"
                 animate={{
-                  scale: [1, 1.2, 1],
-                  rotate: [0, 10, -10, 0]
+                  scale: [1, 1.05, 1]
                 }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
               >
                 ▶️
               </motion.div>
-              <span className="text-2xl md:text-3xl font-extrabold tracking-wider">
-                WATCH VIDEO
+              <span className="text-lg md:text-xl font-extrabold tracking-wider">
+                PLAY FULLSCREEN
               </span>
             </motion.div>
 
-            {/* Animated Glow Effect */}
+            {/* Simplified Glow Effect */}
             <motion.div
               className="absolute inset-0 bg-white opacity-0 rounded-full"
               animate={{
-                opacity: [0, 0.2, 0],
-                scale: [0.8, 1.2, 0.8]
+                opacity: [0, 0.1, 0],
+                scale: [0.95, 1.05, 0.95]
               }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             />
-
-            {/* Pulse Rings */}
-            <motion.div
-              className="absolute inset-0 border-4 border-white opacity-30 rounded-full"
-              animate={{
-                scale: [1, 1.5, 2],
-                opacity: [0.5, 0.2, 0]
-              }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
-            />
-            <motion.div
-              className="absolute inset-0 border-4 border-white opacity-20 rounded-full"
-              animate={{
-                scale: [1, 1.3, 1.8],
-                opacity: [0.3, 0.1, 0]
-              }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeOut", delay: 0.5 }}
-            />
-
-            {/* Floating Particles */}
-            {[...Array(8)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute w-2 h-2 bg-white rounded-full opacity-60"
-                style={{
-                  left: `${20 + Math.cos(i * 45 * Math.PI / 180) * 60}%`,
-                  top: `${50 + Math.sin(i * 45 * Math.PI / 180) * 30}%`
-                }}
-                animate={{
-                  y: [0, -20, 0],
-                  opacity: [0.6, 1, 0.6],
-                  scale: [0.5, 1, 0.5]
-                }}
-                transition={{
-                  duration: 2 + i * 0.2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: i * 0.3
-                }}
-              />
-            ))}
           </motion.button>
 
           {/* Button Description */}
           <motion.p
-            className="text-gray-400 mt-6 text-lg"
+            className="text-gray-400 mt-2 text-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.2, duration: 0.8 }}
+            transition={{ delay: 0.5, duration: 0.5 }}
           >
-            Click to experience the future of cybersecurity education
+            ⚡ Auto-plays in fullscreen
           </motion.p>
         </motion.div>
 
-        {/* Video Modal */}
+        {/* Video Modal - Full Screen Auto-Play */}
         {showVideoModal && (
           <motion.div
-            className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4"
+            className="fixed inset-0 bg-black z-50"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setShowVideoModal(false)}
           >
             <motion.div
-              className="relative w-full max-w-6xl aspect-video bg-black rounded-lg overflow-hidden shadow-2xl"
-              initial={{ scale: 0.5, rotateY: 90 }}
-              animate={{ scale: 1, rotateY: 0 }}
-              exit={{ scale: 0.5, rotateY: -90 }}
-              transition={{ duration: 0.8, type: "spring", bounce: 0.3 }}
-              onClick={(e) => e.stopPropagation()}
+              className="relative w-full h-full bg-black"
+              initial={{ scale: 0.3 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.3 }}
+              transition={{ duration: 0.6, type: "spring", bounce: 0.2 }}
             >
+              {/* Close Button */}
               <button
                 onClick={() => setShowVideoModal(false)}
-                className="absolute top-4 right-4 text-white text-3xl z-10 hover:text-red-500 transition-colors duration-300 bg-black bg-opacity-50 rounded-full w-12 h-12 flex items-center justify-center"
+                className="absolute top-6 right-6 text-white text-4xl z-20 hover:text-red-500 transition-colors duration-300 bg-black bg-opacity-70 rounded-full w-16 h-16 flex items-center justify-center backdrop-blur-sm border border-white border-opacity-20"
+                style={{ backdropFilter: 'blur(10px)' }}
               >
                 ✕
               </button>
-              <iframe
-                src={ilpData.videoUrl}
-                title="NULL ILP Introduction"
-                className="w-full h-full"
-                allowFullScreen
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              />
+
+              {/* Video Content */}
+              {ilpData.videoUrl.includes('youtube.com') || ilpData.videoUrl.includes('youtu.be') ? (
+                // YouTube iframe with autoplay
+                <iframe
+                  src={`${ilpData.videoUrl}?autoplay=1&mute=0&controls=1&modestbranding=1&rel=0&iv_load_policy=3&fs=1`}
+                  title="NULL ILP Introduction"
+                  className="w-full h-full"
+                  allowFullScreen
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                  style={{ border: 'none' }}
+                />
+              ) : (
+                // Local video file with autoplay
+                <video
+                  className="w-full h-full object-cover"
+                  autoPlay
+                  muted={false}
+                  controls
+                  playsInline
+                  style={{ outline: 'none' }}
+                >
+                  <source src={ilpData.videoUrl} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              )}
+
+              {/* Escape Key Hint */}
+              <motion.div
+                className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-white text-sm opacity-70 bg-black bg-opacity-50 px-4 py-2 rounded-full backdrop-blur-sm"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 0.7, y: 0 }}
+                transition={{ delay: 2, duration: 0.5 }}
+              >
+                Press ESC or click ✕ to close • F11 for browser fullscreen
+              </motion.div>
             </motion.div>
           </motion.div>
         )}

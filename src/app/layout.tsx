@@ -11,9 +11,9 @@ export const metadata: Metadata = {
   creator: "CHILAKAPATI SIVA KESAV",
   keywords: ["cybersecurity", "terminal", "null-eec", "education", "hacking", "security"],
   icons: {
-    icon: "/icon.svg",
-    shortcut: "/favicon.ico",
-    apple: "/icon.svg",
+    icon: "/null.png",
+    shortcut: "/null.png",
+    apple: "/null.png",
   },
 };
 

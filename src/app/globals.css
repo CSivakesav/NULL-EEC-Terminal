@@ -1042,3 +1042,21 @@ nextjs-portal {
 .launch-button:active {
   transform: scale(0.95);
 }
+
+/* Video Play Button Styles */
+.video-play-button {
+  position: relative;
+  background-size: 400% 400%;
+  animation: gradient-shift 4s ease infinite;
+  transition: all 0.5s ease;
+  box-shadow:
+    0 15px 35px rgba(255, 23, 68, 0.3),
+    0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.video-play-button:hover {
+  animation: gradient-shift 1.5s ease infinite;
+  box-shadow:
+    0 25px 50px rgba(255, 23, 68, 0.5),
+    0 10px 25px rgba(0, 0, 0, 0.2);
+}

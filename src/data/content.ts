@@ -1679,30 +1679,7 @@ export const fileSystem: FileNode[] = [
         description: 'Experience cutting-edge cybersecurity education through our Interactive Learning Platform. Master real-world skills with hands-on labs, CTF challenges, and expert-led courses.',
         tagline: 'Transform Your Cybersecurity Skills with Interactive Learning'
       },
-      features: [
-        {
-          icon: '🎯',
-          title: 'Hands-on Labs',
-          description: 'Practice in real-world simulated environments'
-        },
-        {
-          icon: '🏆',
-          title: 'CTF Challenges',
-          description: 'Compete and learn through capture-the-flag competitions'
-        },
-        {
-          icon: '📚',
-          title: 'Expert Courses',
-          description: 'Learn from industry professionals and security experts'
-        },
-        {
-          icon: '🔒',
-          title: 'Advanced Security',
-          description: 'Master advanced penetration testing and security analysis'
-        }
-      ],
-      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Replace with actual video URL
-      launchUrl: 'https://lms.nulleec.in/'
+      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ' // Replace with actual video URL
     }
   },
   {

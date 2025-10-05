@@ -753,21 +753,8 @@ const renderEnhancedMarkdown = (content: string) => {
 
 const ContentRenderer = ({ file, setSelectedFile }: { file: FileNode; setSelectedFile: (file: FileNode) => void }) => {
   const [showVideoModal, setShowVideoModal] = useState(false);
-  const [isLaunching, setIsLaunching] = useState(false);
 
-  const handleLaunchClick = () => {
-    setIsLaunching(true);
-
-    // Celebrate for 2 seconds then redirect
-    setTimeout(() => {
-      window.open('https://lms.nulleec.in/', '_blank');
-      setIsLaunching(false);
-    }, 2000);
-  };
-
-  if (!file.content) return null;
-
-  // Getting Started - New visual card-based layout
+  if (!file.content) return null;  // Getting Started - New visual card-based layout
   if (file.id === 'readme' && typeof file.content === 'object' && file.content?.type === 'getting-started') {
     const gettingStartedData = file.content;
     return (
@@ -1411,7 +1398,7 @@ const ContentRenderer = ({ file, setSelectedFile }: { file: FileNode; setSelecte
     const ilpData = file.content;
     return (
       <motion.div
-        className="space-y-12 null-ilp-container"
+        className="space-y-12 null-ilp-container min-h-screen flex flex-col justify-center items-center"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -1443,7 +1430,7 @@ const ContentRenderer = ({ file, setSelectedFile }: { file: FileNode; setSelecte
             {ilpData.hero.subtitle}
           </motion.p>
           <motion.p
-            className="text-lg text-gray-300 max-w-3xl mx-auto mb-8"
+            className="text-lg text-gray-300 max-w-3xl mx-auto mb-16"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
@@ -1452,95 +1439,132 @@ const ContentRenderer = ({ file, setSelectedFile }: { file: FileNode; setSelecte
           </motion.p>
         </motion.div>
 
-        {/* Video Section */}
+        {/* Elaborate Video Play Button */}
         <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7, duration: 0.8 }}
+          className="text-center"
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.8, duration: 1.2, type: "spring", bounce: 0.4 }}
         >
           <motion.button
             onClick={() => setShowVideoModal(true)}
-            className="bg-gradient-to-r from-[#00ff41] to-[#00ffff] text-black px-8 py-4 rounded-lg font-bold text-lg hover:shadow-lg hover:shadow-[#00ff41]/50 transition-all duration-300 mb-8"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            ▶️ Watch Introduction Video
-          </motion.button>
-        </motion.div>
-
-        {/* Features Grid */}
-        <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.9 }}
-        >
-          {ilpData.features.map((feature: any, index: number) => (
-            <motion.div
-              key={index}
-              className="dashboard-card p-6 text-center"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1 + index * 0.1 }}
-              whileHover={{ scale: 1.02, y: -5 }}
-            >
-              <div className="text-4xl mb-4">{feature.icon}</div>
-              <h3 className="text-xl font-bold text-[#00ff41] mb-2">{feature.title}</h3>
-              <p className="text-gray-300">{feature.description}</p>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Launch Button */}
-        <motion.div
-          className="text-center"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 1.4, duration: 0.6 }}
-        >
-          <motion.button
-            onClick={handleLaunchClick}
-            className="launch-button relative overflow-hidden bg-gradient-to-r from-[#ff6b35] via-[#ff3333] to-[#ff6b35] text-white px-16 py-6 rounded-full font-bold text-2xl shadow-2xl transform transition-all duration-300"
+            className="video-play-button relative overflow-hidden bg-gradient-to-r from-[#ff1744] via-[#ff5722] to-[#ff9800] text-white px-20 py-8 rounded-full font-bold text-3xl shadow-2xl transform transition-all duration-500 group"
             whileHover={{
-              scale: 1.1,
-              boxShadow: "0 20px 40px rgba(255, 51, 51, 0.4)",
-              background: "linear-gradient(45deg, #ff3333, #ff6b35, #ffaa00, #ff6b35, #ff3333)"
+              scale: 1.15,
+              boxShadow: "0 25px 50px rgba(255, 23, 68, 0.5)",
+              background: "linear-gradient(45deg, #ff1744, #ff5722, #ff9800, #4caf50, #2196f3, #9c27b0, #ff1744)"
             }}
-            whileTap={{ scale: 0.95 }}
+            whileTap={{ scale: 0.9 }}
             style={{
-              backgroundSize: "300% 300%",
-              animation: "gradient-shift 3s ease infinite"
+              backgroundSize: "400% 400%",
+              animation: "gradient-shift 4s ease infinite"
             }}
           >
-            🚀 LAUNCH NULL ILP 🚀
+            {/* Animated Play Icon */}
             <motion.div
-              className="absolute inset-0 bg-white opacity-0"
-              animate={isLaunching ? { opacity: [0, 0.3, 0] } : {}}
-              transition={{ duration: 0.3, repeat: isLaunching ? 3 : 0 }}
+              className="flex items-center justify-center gap-4"
+              initial={false}
+              animate={{ x: [0, 5, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <motion.div
+                className="text-5xl"
+                animate={{
+                  scale: [1, 1.2, 1],
+                  rotate: [0, 10, -10, 0]
+                }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              >
+                ▶️
+              </motion.div>
+              <span className="text-2xl md:text-3xl font-extrabold tracking-wider">
+                WATCH VIDEO
+              </span>
+            </motion.div>
+
+            {/* Animated Glow Effect */}
+            <motion.div
+              className="absolute inset-0 bg-white opacity-0 rounded-full"
+              animate={{
+                opacity: [0, 0.2, 0],
+                scale: [0.8, 1.2, 0.8]
+              }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             />
+
+            {/* Pulse Rings */}
+            <motion.div
+              className="absolute inset-0 border-4 border-white opacity-30 rounded-full"
+              animate={{
+                scale: [1, 1.5, 2],
+                opacity: [0.5, 0.2, 0]
+              }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
+            />
+            <motion.div
+              className="absolute inset-0 border-4 border-white opacity-20 rounded-full"
+              animate={{
+                scale: [1, 1.3, 1.8],
+                opacity: [0.3, 0.1, 0]
+              }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeOut", delay: 0.5 }}
+            />
+
+            {/* Floating Particles */}
+            {[...Array(8)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-2 h-2 bg-white rounded-full opacity-60"
+                style={{
+                  left: `${20 + Math.cos(i * 45 * Math.PI / 180) * 60}%`,
+                  top: `${50 + Math.sin(i * 45 * Math.PI / 180) * 30}%`
+                }}
+                animate={{
+                  y: [0, -20, 0],
+                  opacity: [0.6, 1, 0.6],
+                  scale: [0.5, 1, 0.5]
+                }}
+                transition={{
+                  duration: 2 + i * 0.2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: i * 0.3
+                }}
+              />
+            ))}
           </motion.button>
+
+          {/* Button Description */}
+          <motion.p
+            className="text-gray-400 mt-6 text-lg"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2, duration: 0.8 }}
+          >
+            Click to experience the future of cybersecurity education
+          </motion.p>
         </motion.div>
 
         {/* Video Modal */}
         {showVideoModal && (
           <motion.div
-            className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4"
+            className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setShowVideoModal(false)}
           >
             <motion.div
-              className="relative w-full max-w-4xl aspect-video bg-black rounded-lg overflow-hidden"
-              initial={{ scale: 0.8 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.8 }}
+              className="relative w-full max-w-6xl aspect-video bg-black rounded-lg overflow-hidden shadow-2xl"
+              initial={{ scale: 0.5, rotateY: 90 }}
+              animate={{ scale: 1, rotateY: 0 }}
+              exit={{ scale: 0.5, rotateY: -90 }}
+              transition={{ duration: 0.8, type: "spring", bounce: 0.3 }}
               onClick={(e) => e.stopPropagation()}
             >
               <button
                 onClick={() => setShowVideoModal(false)}
-                className="absolute top-4 right-4 text-white text-2xl z-10 hover:text-red-500 transition-colors"
+                className="absolute top-4 right-4 text-white text-3xl z-10 hover:text-red-500 transition-colors duration-300 bg-black bg-opacity-50 rounded-full w-12 h-12 flex items-center justify-center"
               >
                 ✕
               </button>
@@ -1554,45 +1578,9 @@ const ContentRenderer = ({ file, setSelectedFile }: { file: FileNode; setSelecte
             </motion.div>
           </motion.div>
         )}
-
-        {/* Celebration Animation */}
-        {isLaunching && (
-          <motion.div
-            className="fixed inset-0 pointer-events-none z-40"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            {[...Array(20)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute text-4xl"
-                initial={{
-                  x: Math.random() * window.innerWidth,
-                  y: window.innerHeight + 50,
-                  rotate: 0
-                }}
-                animate={{
-                  y: -50,
-                  rotate: 360,
-                  x: Math.random() * window.innerWidth
-                }}
-                transition={{
-                  duration: 2,
-                  delay: Math.random() * 0.5,
-                  ease: "easeOut"
-                }}
-              >
-                {['🎉', '🚀', '⭐', '🎊', '💫'][Math.floor(Math.random() * 5)]}
-              </motion.div>
-            ))}
-          </motion.div>
-        )}
       </motion.div>
     );
-  }
-
-  // Contact Us - New visual card-based layout
+  }  // Contact Us - New visual card-based layout
   if (file.id === 'contact' && typeof file.content === 'object' && file.content?.type === 'contact-us') {
     const contactData = file.content;
     return (

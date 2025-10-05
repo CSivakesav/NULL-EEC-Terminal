@@ -1393,6 +1393,192 @@ const ContentRenderer = ({ file, setSelectedFile }: { file: FileNode; setSelecte
     );
   }
 
+  // NULL ILP - Interactive Learning Platform
+  if (file.id === 'null-ilp' && typeof file.content === 'object' && file.content?.type === 'null-ilp') {
+    const ilpData = file.content;
+    return (
+      <motion.div
+        className="space-y-12 null-ilp-container"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        {/* Hero Section */}
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <motion.h1
+            className="text-5xl md:text-6xl font-bold gradient-text mb-4 relative inline-block"
+          >
+            {ilpData.hero.title}
+            <motion.div
+              className="absolute -bottom-3 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#00ff41] to-transparent"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+            />
+          </motion.h1>
+          <motion.p
+            className="text-xl md:text-2xl text-gray-200 mb-6 max-w-4xl mx-auto leading-relaxed"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+          >
+            {ilpData.hero.subtitle}
+          </motion.p>
+          <motion.p
+            className="text-lg text-gray-300 max-w-3xl mx-auto mb-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+          >
+            {ilpData.hero.description}
+          </motion.p>
+        </motion.div>
+
+        {/* Video Section */}
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.7, duration: 0.8 }}
+        >
+          <motion.button
+            onClick={() => setShowVideoModal(true)}
+            className="bg-gradient-to-r from-[#00ff41] to-[#00ffff] text-black px-8 py-4 rounded-lg font-bold text-lg hover:shadow-lg hover:shadow-[#00ff41]/50 transition-all duration-300 mb-8"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            ▶️ Watch Introduction Video
+          </motion.button>
+        </motion.div>
+
+        {/* Features Grid */}
+        <motion.div
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.9 }}
+        >
+          {ilpData.features.map((feature: any, index: number) => (
+            <motion.div
+              key={index}
+              className="dashboard-card p-6 text-center"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1 + index * 0.1 }}
+              whileHover={{ scale: 1.02, y: -5 }}
+            >
+              <div className="text-4xl mb-4">{feature.icon}</div>
+              <h3 className="text-xl font-bold text-[#00ff41] mb-2">{feature.title}</h3>
+              <p className="text-gray-300">{feature.description}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Launch Button */}
+        <motion.div
+          className="text-center"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 1.4, duration: 0.6 }}
+        >
+          <motion.button
+            onClick={handleLaunchClick}
+            className="launch-button relative overflow-hidden bg-gradient-to-r from-[#ff6b35] via-[#ff3333] to-[#ff6b35] text-white px-16 py-6 rounded-full font-bold text-2xl shadow-2xl transform transition-all duration-300"
+            whileHover={{ 
+              scale: 1.1, 
+              boxShadow: "0 20px 40px rgba(255, 51, 51, 0.4)",
+              background: "linear-gradient(45deg, #ff3333, #ff6b35, #ffaa00, #ff6b35, #ff3333)"
+            }}
+            whileTap={{ scale: 0.95 }}
+            style={{
+              backgroundSize: "300% 300%",
+              animation: "gradient-shift 3s ease infinite"
+            }}
+          >
+            🚀 LAUNCH NULL ILP 🚀
+            <motion.div
+              className="absolute inset-0 bg-white opacity-0"
+              animate={isLaunching ? { opacity: [0, 0.3, 0] } : {}}
+              transition={{ duration: 0.3, repeat: isLaunching ? 3 : 0 }}
+            />
+          </motion.button>
+        </motion.div>
+
+        {/* Video Modal */}
+        {showVideoModal && (
+          <motion.div
+            className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowVideoModal(false)}
+          >
+            <motion.div
+              className="relative w-full max-w-4xl aspect-video bg-black rounded-lg overflow-hidden"
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.8 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setShowVideoModal(false)}
+                className="absolute top-4 right-4 text-white text-2xl z-10 hover:text-red-500 transition-colors"
+              >
+                ✕
+              </button>
+              <iframe
+                src={ilpData.videoUrl}
+                title="NULL ILP Introduction"
+                className="w-full h-full"
+                allowFullScreen
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+
+        {/* Celebration Animation */}
+        {isLaunching && (
+          <motion.div
+            className="fixed inset-0 pointer-events-none z-40"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            {[...Array(20)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute text-4xl"
+                initial={{ 
+                  x: Math.random() * window.innerWidth,
+                  y: window.innerHeight + 50,
+                  rotate: 0 
+                }}
+                animate={{ 
+                  y: -50,
+                  rotate: 360,
+                  x: Math.random() * window.innerWidth
+                }}
+                transition={{ 
+                  duration: 2,
+                  delay: Math.random() * 0.5,
+                  ease: "easeOut" 
+                }}
+              >
+                {['🎉', '🚀', '⭐', '🎊', '💫'][Math.floor(Math.random() * 5)]}
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
+      </motion.div>
+    );
+  }
+
   // Contact Us - New visual card-based layout
   if (file.id === 'contact' && typeof file.content === 'object' && file.content?.type === 'contact-us') {
     const contactData = file.content;
@@ -3765,6 +3951,8 @@ export default function NullEecTerminal() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [easterEggPopup, setEasterEggPopup] = useState<{ message: string, show: boolean }>({ message: '', show: false });
+  const [showVideoModal, setShowVideoModal] = useState(false);
+  const [isLaunching, setIsLaunching] = useState(false);
   const terminalRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -3842,6 +4030,16 @@ export default function NullEecTerminal() {
         contentRef.current.scrollTo({ top: 0, behavior: 'smooth' });
       }
     }, 100); // Small delay to ensure content is rendered
+  };
+
+  const handleLaunchClick = () => {
+    setIsLaunching(true);
+    
+    // Celebrate for 2 seconds then redirect
+    setTimeout(() => {
+      window.open('https://lms.nulleec.in/', '_blank');
+      setIsLaunching(false);
+    }, 2000);
   };
 
   const addToHistory = (message: string) => {

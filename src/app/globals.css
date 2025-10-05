@@ -1025,3 +1025,20 @@ nextjs-portal {
     0 0 40px rgba(0, 255, 255, 0.2),
     0 0 60px rgba(0, 255, 255, 0.1);
 }
+
+/* Launch Button Styles */
+.launch-button {
+  position: relative;
+  background-size: 300% 300%;
+  animation: gradient-shift 3s ease infinite;
+  transition: all 0.3s ease;
+}
+
+.launch-button:hover {
+  animation: gradient-shift 1s ease infinite;
+  transform: scale(1.1);
+}
+
+.launch-button:active {
+  transform: scale(0.95);
+}

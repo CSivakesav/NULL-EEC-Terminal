@@ -753,17 +753,72 @@ const renderEnhancedMarkdown = (content: string) => {
 
 const ContentRenderer = ({ file, setSelectedFile }: { file: FileNode; setSelectedFile: (file: FileNode) => void }) => {
   const [showVideoModal, setShowVideoModal] = useState(false);
+  const videoContainerRef = useRef<HTMLDivElement>(null);
 
-  // Handle ESC key to close video modal
+  // Handle fullscreen video
+  const openVideoFullscreen = async () => {
+    setShowVideoModal(true);
+
+    // Wait for modal to render, then request fullscreen
+    setTimeout(async () => {
+      if (videoContainerRef.current) {
+        try {
+          if (videoContainerRef.current.requestFullscreen) {
+            await videoContainerRef.current.requestFullscreen();
+          } else if ((videoContainerRef.current as any).webkitRequestFullscreen) {
+            await (videoContainerRef.current as any).webkitRequestFullscreen();
+          } else if ((videoContainerRef.current as any).mozRequestFullScreen) {
+            await (videoContainerRef.current as any).mozRequestFullScreen();
+          } else if ((videoContainerRef.current as any).msRequestFullscreen) {
+            await (videoContainerRef.current as any).msRequestFullscreen();
+          }
+        } catch (error) {
+          console.log('Fullscreen request failed:', error);
+        }
+      }
+    }, 100);
+  };
+
+  const closeVideoModal = () => {
+    setShowVideoModal(false);
+    // Exit fullscreen if it's active
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    } else if ((document as any).webkitFullscreenElement) {
+      (document as any).webkitExitFullscreen();
+    } else if ((document as any).mozFullScreenElement) {
+      (document as any).mozCancelFullScreen();
+    } else if ((document as any).msFullscreenElement) {
+      (document as any).msExitFullscreen();
+    }
+  };
+
+  // Handle ESC key and fullscreen changes
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape' && showVideoModal) {
+        closeVideoModal();
+      }
+    };
+
+    const handleFullscreenChange = () => {
+      // If user exits fullscreen manually, close the modal
+      if (!document.fullscreenElement &&
+        !(document as any).webkitFullscreenElement &&
+        !(document as any).mozFullScreenElement &&
+        !(document as any).msFullscreenElement &&
+        showVideoModal) {
         setShowVideoModal(false);
       }
     };
 
     if (showVideoModal) {
       document.addEventListener('keydown', handleKeyDown);
+      document.addEventListener('fullscreenchange', handleFullscreenChange);
+      document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+      document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+      document.addEventListener('MSFullscreenChange', handleFullscreenChange);
+
       // Prevent body scrolling when modal is open
       document.body.style.overflow = 'hidden';
     } else {
@@ -772,6 +827,10 @@ const ContentRenderer = ({ file, setSelectedFile }: { file: FileNode; setSelecte
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+      document.removeEventListener('webkitfullscreenchange', handleFullscreenChange);
+      document.removeEventListener('mozfullscreenchange', handleFullscreenChange);
+      document.removeEventListener('MSFullscreenChange', handleFullscreenChange);
       document.body.style.overflow = 'auto';
     };
   }, [showVideoModal]);
@@ -1469,7 +1528,7 @@ const ContentRenderer = ({ file, setSelectedFile }: { file: FileNode; setSelecte
           transition={{ delay: 0.3, duration: 0.6, type: "spring", bounce: 0.2 }}
         >
           <motion.button
-            onClick={() => setShowVideoModal(true)}
+            onClick={openVideoFullscreen}
             className="video-play-button relative overflow-hidden bg-gradient-to-r from-[#ff1744] via-[#ff5722] to-[#ff9800] text-white px-12 py-4 rounded-full font-bold text-xl shadow-xl transform transition-all duration-500 group"
             whileHover={{
               scale: 1.05,
@@ -1528,6 +1587,7 @@ const ContentRenderer = ({ file, setSelectedFile }: { file: FileNode; setSelecte
         {/* Video Modal - Full Screen Auto-Play */}
         {showVideoModal && (
           <motion.div
+            ref={videoContainerRef}
             className="fixed inset-0 bg-black z-50"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -1542,7 +1602,7 @@ const ContentRenderer = ({ file, setSelectedFile }: { file: FileNode; setSelecte
             >
               {/* Close Button */}
               <button
-                onClick={() => setShowVideoModal(false)}
+                onClick={closeVideoModal}
                 className="absolute top-6 right-6 text-white text-4xl z-20 hover:text-red-500 transition-colors duration-300 bg-black bg-opacity-70 rounded-full w-16 h-16 flex items-center justify-center backdrop-blur-sm border border-white border-opacity-20"
                 style={{ backdropFilter: 'blur(10px)' }}
               >
